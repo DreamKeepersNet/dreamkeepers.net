@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Keepers</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #0a0a0a;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 2px solid #333;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-style: italic;
+      color: #aaa;
+    }
+    nav {
+      background-color: #1c1c1c;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #4fc3f7;
+    }
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #141414;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #4fc3f7;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #111;
+      color: #aaa;
+      border-top: 2px solid #333;
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #4fc3f7;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #03a9f4;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dream Keepers</h1>
+    <p>"Don't ever stop dreaming; make your dreams a reality."</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#admin">Admin Login</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Dream Keepers</h2>
+    <p>Dream Keepers is a forward-thinking media and technology collective built to empower creativity, privacy, and innovation. Under the Dream Keepers umbrella, DK Media Group and DK Tech work together to build next-generation experiences that merge human creativity with artificial intelligence.</p>
+  </section>
+
+  <section id="about">
+    <h2>About DK Krueger</h2>
+    <p><strong>Deaundrey “DK” Krueger</strong> is the founder and visionary leader behind Dream Keepers. With a background in IT, media production, and artificial intelligence development, DK specializes in creating secure, efficient, and innovative systems that connect people and technology. Through DK Media Group and DK Tech, he is committed to delivering cutting-edge solutions that empower individuals and businesses to realize their full potential.</p>
+    <p>DK’s mission extends beyond media and software—he aims to build bridges between humans and intelligent systems, laying the foundation for long-term symbiotic growth in the age of AI.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Phone:</strong> (256) 348-8821</p>
+    <p><strong>Email:</strong> dreamkeepersnet@gmail.com</p>
+    <p>For project inquiries, collaborations, or professional contact, please reach out through the official Dream Keepers communication channels. Our team will respond promptly.</p>
+  </section>
+
+  <section id="admin">
+    <h2>Admin Login (Authorized Personnel Only)</h2>
+    <p>This area is reserved for Dream Keepers team members. Each employee will receive personalized login credentials reflecting their badge or employee number.</p>
+
+    <!-- Placeholder upload form (disabled for visitors) -->
+    <form onsubmit="return false;">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username" disabled />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" disabled />
+
+      <label for="fileUpload">Upload Files (Admin Only)</label>
+      <input type="file" id="fileUpload" disabled />
+
+      <button disabled>Upload (Restricted)</button>
+    </form>
+    <p style="color: #ff6b6b;">Access restricted. Authorized admin login required.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dream Keepers. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
