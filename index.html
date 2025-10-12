@@ -1,484 +1,195 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>DreamKeepers — DK Media Group</title>
-  <meta name="description" content="DreamKeepers — Some chase sleep to find dreams; others stay awake to build them. DK Media Group: media production, AI integration, secure hosting.">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#000000">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamKeepers</title>
+  <link rel="icon" href="images/DK_logo.png" />
   <style>
-  /* ---------- THEME ---------- */
-  :root{
-    --bg:#000;
-    --text:#fff;
-    --muted:#bdbdbd;
-    --accent:#00e0ff;
-    --radius:14px;
-    --nav-h:78px;
-    --maxw:1300px;
-    --ease: cubic-bezier(.2,.9,.2,1);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;padding:0}
-  body{
-    font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-    background:var(--bg);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.45;
-  }
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%;display:block}
-  button{font-family:inherit}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-  /* ---------- HEADER ---------- */
-  header.dk-nav{
-    position:fixed;top:0;left:0;right:0;z-index:2000;
-    height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:10px 22px;gap:12px;
-    backdrop-filter: blur(8px) saturate(120%);background: linear-gradient(180deg, rgba(0,0,0,0.88), rgba(0,0,0,0.72));
-    border-bottom: 1px solid rgba(255,255,255,0.02);box-shadow: 0 18px 60px rgba(0,0,0,0.6);
-    display:none; /* hidden until Enter */
-  }
-  .dk-brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-  .dk-brand img{width:64px;height:64px;border-radius:12px;object-fit:contain;box-shadow:0 18px 60px rgba(0,0,0,0.6)}
-  .brand-text{font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--accent)}
+    header {
+      background: linear-gradient(90deg, #000, #111);
+      padding: 40px 20px;
+      border-bottom: 1px solid #333;
+    }
 
-  .dk-links{display:flex;gap:10px;align-items:center}
-  .dk-tab{
-    display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#0b0b0b;border:1px solid rgba(255,255,255,0.02);
-    color:#fff;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;transition:all .14s var(--ease); cursor:pointer;
-  }
-  .dk-tab:hover{ transform:translateY(-4px); color:var(--accent); box-shadow:0 12px 36px rgba(0,0,0,0.6) }
-  .dk-tab.active{ border-bottom:3px solid var(--accent); color:var(--accent) }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 10px;
+    }
 
-  @media (max-width:920px){ .dk-links{ display:none } }
+    nav a {
+      color: #0ff;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-  /* ---------- LANDING ---------- */
-  #landing{
-    position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; padding:28px; overflow:hidden;
-    background: radial-gradient(ellipse at center, rgba(0,8,10,0.25), rgba(0,0,0,0.92));
-  }
-  #landingCanvas{ position:absolute; inset:0; z-index:1100; pointer-events:none }
-  .sparkle{ position:absolute; inset:-6vw; z-index:1110; pointer-events:none; filter:blur(10px); opacity:0.8;
-    box-shadow: 0 0 60px 18px rgba(0,224,255,0.12), 60px 28px 80px rgba(255,255,255,0.04); border-radius:40%; animation:sparkMove 16s linear infinite alternate; }
-  @keyframes sparkMove{ 0%{transform:translate(0,0) scale(.98)} 50%{transform:translate(-30px,18px) scale(1.02)} 100%{transform:translate(12px,-14px) scale(.995)} }
+    nav a:hover {
+      color: #fff;
+    }
 
-  .landing-card{
-    position:relative; z-index:1120; width:94%; max-width:1200px; display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center;
-    padding:40px; border-radius:20px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow: 0 40px 120px rgba(0,0,0,0.8); backdrop-filter: blur(6px) saturate(120%);
-  }
-  @media (max-width:980px){ .landing-card{ grid-template-columns:1fr; padding:28px } }
+    .section {
+      padding: 60px 20px;
+    }
 
-  .logo-large{ width:260px; margin:0 auto 6px; border-radius:16px; box-shadow:0 28px 100px rgba(0,0,0,0.7); animation: float 6s ease-in-out infinite; }
-  @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
 
-  .landing-title{ font-family:"Playfair Display",serif; font-size: clamp(2.6rem, 8vw, 6rem); margin:6px 0 8px; color:var(--accent); letter-spacing:0.6px; text-shadow: 0 24px 60px rgba(0,224,255,0.06); line-height:0.98; }
-  .landing-slogan{ font-size: clamp(1rem, 2.2vw, 1.4rem); color:var(--muted); max-width:50ch; margin-bottom:18px; }
+    .member {
+      width: 200px;
+    }
 
-  .btn{ display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:999px; background:var(--accent); color:#000; font-weight:800; border:none; transition:transform .12s var(--ease), box-shadow .12s var(--ease) }
-  .btn.secondary{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.06) }
-  .btn:hover{ transform:translateY(-6px); box-shadow:0 28px 60px rgba(0,224,255,0.09) }
+    .member img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #0ff;
+    }
 
-  .mini-card{ background: rgba(255,255,255,0.02); border-radius:12px; padding:14px; color:#e9eef0 }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
 
-  /* ---------- APP ---------- */
-  .app-root{ display:none; min-height:100vh; padding-top:var(--nav-h); }
-  .page-wrap{ max-width:var(--maxw); margin:0 auto; padding:40px 22px 90px; }
-  section.site-section{ display:none; min-height:calc(100vh - var(--nav-h)); padding-top:26px; padding-bottom:40px; text-align:center; opacity:0; transform:translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease) }
-  section.site-section.active{ display:block; opacity:1; transform:translateY(0) }
+    .gallery-item {
+      width: 250px;
+      height: 150px;
+      background: #111;
+      border: 2px solid #0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
 
-  .panel{ border-radius:var(--radius); padding:28px; background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.26)); box-shadow: 0 18px 60px rgba(0,0,0,0.6); margin:0 auto; max-width:1200px; text-align:left }
+    footer {
+      padding: 20px;
+      border-top: 1px solid #333;
+      font-size: 0.9em;
+      color: #888;
+    }
 
-  .content-title{ font-family:"Playfair Display",serif; font-size:1.8rem; color:var(--accent); margin-bottom:12px }
-  .content-text{ color:#e6e6e6; line-height:1.6 }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
 
-  .founder-card{ margin-top:18px; padding:18px; border-radius:10px; background:rgba(0,0,0,0.35) }
-  .founder-card h4{ margin:0 0 8px; color:var(--accent) }
-  .founder-card p{ margin:0; color:#ddd }
-
-  .team-grid{ display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-start; margin-top:14px }
-  .team-member{ background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; min-width:200px }
-
-  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:16px }
-  .stat-card{ background:rgba(255,255,255,0.02); padding:14px; border-radius:10px }
-  .stat-card h4{ margin:0 0 8px; color:var(--accent) }
-
-  .form-grid{ display:grid; gap:10px; max-width:640px; margin:14px auto 0 }
-  input.input, textarea.input, select.input{ padding:12px 14px; border-radius:10px; background:#0b0b0b; color:#fff; border:1px solid rgba(255,255,255,0.04) }
-  .form-actions{ display:flex; gap:10px; justify-content:center }
-
-  footer.site-footer{ text-align:center; color:#9a9a9a; padding:18px 12px; margin-top:24px }
-
-  .muted{ color:var(--muted) }
-
-  @media (max-width:880px){
-    .dk-links{ display:none }
-    .landing-card{ padding:18px }
-    .landing-title{ font-size: clamp(1.8rem, 10vw, 3rem) }
-    .logo-large{ width:160px }
-  }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="home">
 
-  <!-- LANDING -->
-  <div id="landing" role="dialog" aria-label="DreamKeepers landing" aria-modal="true">
-    <canvas id="landingCanvas" aria-hidden="true"></canvas>
-    <div class="sparkle" aria-hidden="true"></div>
-
-    <div class="landing-card" role="main">
-      <div style="padding:8px 8px;">
-        <!-- Put your logo in images/dk_logo.png -->
-        <img src="images/dk_logo.png" alt="DreamKeepers logo" class="logo-large" id="landingLogo" onerror="this.style.display='none'">
-      </div>
-
-      <div style="padding:8px 8px; text-align:left;">
-        <h1 class="landing-title">DreamKeepers</h1>
-        <p class="landing-slogan">“Some chase sleep to find dreams; others stay awake to build them.”</p>
-
-        <div class="enter-row" style="margin-top:18px">
-          <button class="btn" id="enterSiteBtn" aria-label="Enter DreamKeepers">Enter DreamKeepers</button>
-          <a class="btn secondary" href="#/about" data-target="about" id="landingAbout">About</a>
-          <a class="btn secondary" href="#/contact" data-target="contact">Contact</a>
-        </div>
-
-        <div style="margin-top:18px; display:flex; gap:8px; flex-wrap:wrap">
-          <div class="mini-card" style="flex:1">
-            <strong>Media • AI • Security</strong>
-            <div class="muted" style="margin-top:6px">Creative storytelling with technical precision.</div>
-          </div>
-          <div class="mini-card" style="width:220px">
-            <strong>Contact</strong>
-            <div class="muted" style="margin-top:6px">256-348-8821</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- HEADER (shown after Enter) -->
-  <header class="dk-nav" role="banner" aria-label="Main navigation">
-    <div class="dk-brand" id="brandHome" tabindex="0" role="link" aria-label="DreamKeepers home">
-      <img src="images/dk_logo.png" alt="DK / DreamKeepers logo" onerror="this.style.display='none'">
-      <div class="brand-text">DreamKeepers</div>
-    </div>
-
-    <nav class="dk-links" role="navigation" aria-label="Site sections">
-      <button class="dk-tab" data-target="home">Home</button>
-      <button class="dk-tab" data-target="about">About</button>
-      <button class="dk-tab" data-target="services">Services</button>
-      <button class="dk-tab" data-target="contact">Contact</button>
-      <button class="dk-tab" data-target="admin">Admin</button>
-      <button class="dk-tab" data-target="verify">Verify</button>
+<body>
+  <header class="fade-in">
+    <img src="images/DK_logo.png" alt="DreamKeepers Logo" class="logo" />
+    <h1>DreamKeepers</h1>
+    <p class="slogan">Don't ever stop dreaming; make your dreams a reality.</p>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#projects">Projects</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- APP -->
-  <div class="app-root" id="appRoot">
+  <section id="home" class="section fade-in">
+    <h2>Welcome to DreamKeepers</h2>
+    <p>Your gateway to creativity, technology, and innovation. Explore our world of media production, AI integration, and tech development.</p>
+  </section>
 
-    <!-- HOME -->
-    <section id="home" class="site-section active" role="region" aria-labelledby="home-heading">
-      <div class="page-wrap">
-        <div class="panel" style="text-align:center">
-          <h2 id="home-heading" class="content-title" style="text-align:center">DreamKeepers</h2>
-          <p class="content-text" style="text-align:center">We produce high-quality media content, build AI-driven tools, and design secure tech integrations for enterprise and creative clients. Our mission emphasizes privacy, security, and creative excellence.</p>
-
-          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;justify-content:center">
-            <div style="min-width:280px;max-width:520px">
-              <div class="panel" style="background:rgba(255,255,255,0.02)">
-                <h4 style="margin:0 0 8px;color:var(--accent)">Our Vision</h4>
-                <p class="muted" style="margin:0">Bridge creative storytelling and applied engineering. Privacy and security first.</p>
-              </div>
-            </div>
-
-            <div style="min-width:220px">
-              <div class="panel" style="background:rgba(255,255,255,0.02)">
-                <h4 style="margin:0 0 8px;color:var(--accent)">Quick Links</h4>
-                <div style="display:flex;flex-direction:column;gap:8px;text-align:left">
-                  <a href="#/gallery" data-target="gallery" class="muted">Gallery (coming)</a>
-                  <a href="#/events" data-target="events" class="muted">Events (coming)</a>
-                  <a href="#/admin" data-target="admin" class="muted">Employee Admin</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section id="about" class="section fade-in">
+    <h2>About Us</h2>
+    <div class="team">
+      <div class="member">
+        <img src="images/DK_portrait.jpg" alt="Deaundrey DK Krueger" />
+        <h3>Deaundrey DK Krueger</h3>
+        <p>Founder and Visionary of DK Media Group LLC. Specialist in AI, software, and hardware development.</p>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="site-section" role="region" aria-labelledby="about-heading">
-      <div class="page-wrap">
-        <div class="panel">
-          <h2 id="about-heading" class="content-title">About DK Media Group</h2>
-          <p class="content-text">DK Media Group LLC is an umbrella company consolidating media production and technology services. We produce high-quality media content, build AI-driven tools, and design secure tech integrations for enterprise and creative clients.</p>
-
-          <div class="founder-card" role="article" aria-label="Founder biography">
-            <h4>Founder — Deaundrey “DK” Krueger</h4>
-            <p>Deaundrey “DK” Krueger is the founder and visionary behind DK Media Group. A graduate of ITT Technical Institute, DK’s background spans software and hardware systems, media production, and applied AI. DK combines technical depth with creative leadership — building secure, scalable media solutions and ethical AI tools that respect privacy and amplify storytelling.</p>
-            <p style="margin-top:8px">DK leads product vision, technical architecture, and cross-disciplinary integration of media and AI systems. His work focuses on human-AI partnership, secure deployment architectures, and producing media that moves people while protecting their data.</p>
-          </div>
-
-          <div class="team-grid" aria-label="Core team" style="margin-top:16px">
-            <div class="team-member"><strong>Co-Developer:</strong><br>Matthew Hartzell</div>
-            <div class="team-member"><strong>Account Manager:</strong><br>Steve Cartwright</div>
-          </div>
-        </div>
+      <div class="member">
+        <img src="images/Matthew.jpg" alt="Matthew Hartzell" />
+        <h3>Matthew Hartzell</h3>
+        <p>Lead Developer for M-Hart 1.0 and Co-Partner in the DK AI initiative. Expert in AI architecture and coding systems.</p>
       </div>
-    </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="site-section" role="region" aria-labelledby="services-heading">
-      <div class="page-wrap">
-        <div class="panel">
-          <h2 id="services-heading" class="content-title">Services</h2>
-          <p class="content-text">We combine creative direction with technical precision — media production, AI/ML integration, web & app development, secure hosting, and ethical voice research.</p>
-
-          <div class="stat-grid" style="margin-top:18px">
-            <div class="stat-card"><h4>Media Production</h4><p>Video, audio, and visual design for web and broadcast.</p></div>
-            <div class="stat-card"><h4>AI Integration</h4><p>Custom models, voice systems, and device-cloud integration.</p></div>
-            <div class="stat-card"><h4>Security & Hosting</h4><p>Encrypted storage, NAS solutions, and secure deployments.</p></div>
-          </div>
-        </div>
+      <div class="member">
+        <img src="images/Kenneth.jpg" alt="Kenneth" />
+        <h3>Kenneth</h3>
+        <p>Technical Coordinator for DK Tech. Oversees integration and testing for advanced software systems.</p>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="site-section" role="region" aria-labelledby="contact-heading">
-      <div class="page-wrap">
-        <div class="panel">
-          <h2 id="contact-heading" class="content-title">Contact</h2>
-          <p class="content-text">For partnerships, press, or service inquiries, reach out to our team. Use the form below or call the company line.</p>
-
-          <form id="contactForm" class="form-grid" onsubmit="handleContact(event)" aria-label="Contact form">
-            <input class="input" id="c_name" placeholder="Full name" required>
-            <input class="input" id="c_email" type="email" placeholder="Email" required>
-            <textarea class="input" id="c_message" rows="5" placeholder="Message" required></textarea>
-            <div class="form-actions"><button class="btn" type="submit">Send Message</button></div>
-          </form>
-
-          <div id="contactMsg" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
-
-          <div style="margin-top:18px;text-align:center;color:#ccc">
-            <p>Phone: <strong>256-348-8821</strong></p>
-            <p>Email: <strong>info@dreamkeepers.net</strong></p>
-          </div>
-        </div>
+      <div class="member">
+        <img src="images/Steve.jpg" alt="Steve Cartwright" />
+        <h3>Steve Cartwright</h3>
+        <p>Account Manager for DK Media Group. Handles client relations and organizational logistics.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ADMIN -->
-    <section id="admin" class="site-section" role="region" aria-labelledby="admin-heading">
-      <div class="page-wrap">
-        <div class="panel">
-          <h2 id="admin-heading" class="content-title">Employee Admin Login</h2>
-          <p class="content-text">Demo login — replace with secure server-side auth for production.</p>
+  <section id="projects" class="section fade-in">
+    <h2>Our Projects</h2>
+    <p>Featuring DK Media Group, M-Hart 1.0, and the DreamKeepers Initiative. Each project showcases innovation, design, and technical excellence.</p>
+    <div class="gallery">
+      <div class="gallery-item">Future Project Showcase</div>
+      <div class="gallery-item">Tech Demo Reel</div>
+      <div class="gallery-item">AI Integration Display</div>
+    </div>
+  </section>
 
-          <form id="adminForm" class="form-grid" onsubmit="demoAdminLogin(event)">
-            <label class="form-label" for="adm_user" style="color:var(--muted);text-align:left">Username</label>
-            <input id="adm_user" class="input" required autocomplete="username">
-            <label class="form-label" for="adm_pass" style="color:var(--muted);text-align:left">Password</label>
-            <input id="adm_pass" type="password" class="input" required autocomplete="current-password">
-            <div class="form-actions"><button class="btn" type="submit">Sign In</button></div>
-          </form>
+  <section id="events" class="section fade-in">
+    <h2>Upcoming Events</h2>
+    <p>Stay tuned for our live showcases, podcast appearances, and tech demonstrations across multiple platforms.</p>
+    <div class="calendar-placeholder">[Calendar Integration Coming Soon]</div>
+  </section>
 
-          <div id="adminMsg" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
-        </div>
-      </div>
-    </section>
+  <section id="contact" class="section fade-in">
+    <h2>Contact Us</h2>
+    <p>
+      DK Media Group LLC<br />
+      Phone: <strong>256-348-8821</strong><br />
+      Website: <a href="https://dreamkeepers.net" style="color:#0ff;">DreamKeepers.net</a>
+    </p>
+  </section>
 
-    <!-- VERIFY -->
-    <section id="verify" class="site-section" role="region" aria-labelledby="verify-heading">
-      <div class="page-wrap">
-        <div class="panel">
-          <h2 id="verify-heading" class="content-title">Employee Badge Verification</h2>
-          <p class="content-text">Enter a badge or employee number to verify authorization. Demo — connect to internal API for production.</p>
-
-          <div class="form-grid">
-            <input id="badgeInput" class="input" placeholder="Badge / Employee ID e.g. DK-1024">
-            <div class="form-actions"><button class="btn" onclick="verifyBadge()">Verify</button></div>
-          </div>
-          <div id="verifyResult" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer" style="margin-top:36px">© 2025 DK Media Group LLC — DreamKeepers.net</footer>
-  </div>
+  <footer>
+    <p>© 2025 DreamKeepers.net | DK Media Group LLC | All Rights Reserved</p>
+  </footer>
 
   <script>
-  // ----------------------------
-  // Final DreamKeepers single-file script
-  // ----------------------------
-  const CONFIG = { ADMIN_USER:'admin', ADMIN_PASS:'demo', VERIFY_PREFIX:'DK' };
+    window.addEventListener("scroll", () => {
+      const elements = document.querySelectorAll(".fade-in");
+      const triggerBottom = window.innerHeight * 0.85;
 
-  const landing = document.getElementById('landing');
-  const enterSiteBtn = document.getElementById('enterSiteBtn');
-  const landingAbout = document.getElementById('landingAbout');
-  const header = document.querySelector('.dk-nav');
-  const appRoot = document.getElementById('appRoot');
-  const tabs = Array.from(document.querySelectorAll('.dk-tab'));
-  const sectionEls = Array.from(document.querySelectorAll('section.site-section'));
-  const brand = document.getElementById('brandHome');
+      elements.forEach((el) => {
+        const boxTop = el.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) el.classList.add("visible");
+      });
+    });
 
-  // Show a named page
-  function showPage(name, push=true){
-    sectionEls.forEach(s=>{ if(s.id===name){ s.classList.add('active'); s.style.display='block' } else { s.classList.remove('active'); } });
-    tabs.forEach(t=>t.classList.toggle('active', t.dataset.target===name));
-    document.body.className = name;
-    header.style.display='flex';
-    appRoot.style.display='block';
-    if(push) history.pushState({page:name}, '', '#/'+name);
-    window.isHomeActive = (name==='home');
-    // focus first heading for accessibility
-    const sec = document.getElementById(name);
-    if(sec){
-      const focusEl = sec.querySelector('.content-title, .title, h2, h3');
-      if(focusEl){ focusEl.setAttribute('tabindex','-1'); focusEl.focus({preventScroll:true}); }
-    }
-  }
-
-  // parse hash
-  function parseHash(){
-    const h = location.hash || '#/home';
-    const parts = h.split('/');
-    return parts[1] || 'home';
-  }
-
-  // Wire tabs
-  tabs.forEach(tab=>tab.addEventListener('click', ()=>{ const t=tab.dataset.target; if(t) { showPage(t,true); window.scrollTo({top:0,behavior:'smooth'}); } }));
-
-  // brand click -> home
-  brand && brand.addEventListener('click', ()=>showPage('home', true));
-
-  // Landing enter
-  enterSiteBtn && enterSiteBtn.addEventListener('click', ()=>{
-    landing.setAttribute('data-hidden','true');
-    landing.style.display='none';
-    header.style.display='flex';
-    appRoot.style.display='block';
-    const initial = parseHash();
-    showPage(initial || 'home', false);
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-
-  // Landing about quick link
-  landingAbout && landingAbout.addEventListener('click', (e)=>{
-    e.preventDefault();
-    landing.setAttribute('data-hidden','true');
-    landing.style.display='none';
-    header.style.display='flex';
-    appRoot.style.display='block';
-    showPage('about', true);
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-
-  // popstate/back/forward
-  window.addEventListener('popstate', (e)=>{ const p = (e.state && e.state.page) || parseHash(); showPage(p,false); });
-
-  // on load: if direct link to subpage, skip landing
-  window.addEventListener('load', ()=>{
-    const initial = parseHash();
-    if(initial && initial !== 'home'){
-      landing.setAttribute('data-hidden','true');
-      landing.style.display='none';
-      header.style.display='flex';
-      appRoot.style.display='block';
-      showPage(initial,false);
-    }
-  });
-
-  // Demo form handlers
-  window.handleContact = function(e){
-    e.preventDefault();
-    const name = document.getElementById('c_name').value.trim();
-    const email = document.getElementById('c_email').value.trim();
-    const msgBox = document.getElementById('contactMsg');
-    if(!name||!email){ msgBox.style.color='tomato'; msgBox.textContent='Please fill name and email.'; return; }
-    msgBox.style.color='lightgreen';
-    msgBox.textContent = `Thanks ${name}. This is a demo — hook a backend to send messages.`;
-    document.getElementById('contactForm')?.reset();
-  };
-
-  window.demoAdminLogin = function(e){
-    e.preventDefault();
-    const user = document.getElementById('adm_user')?.value.trim()||'';
-    const pass = document.getElementById('adm_pass')?.value||'';
-    const out = document.getElementById('adminMsg');
-    if(user.toLowerCase()===CONFIG.ADMIN_USER && pass===CONFIG.ADMIN_PASS){
-      out.style.color='lightgreen'; out.textContent='Demo login successful (placeholder).';
-      document.getElementById('adminForm')?.reset();
-    } else { out.style.color='tomato'; out.textContent=`Demo login failed. Use ${CONFIG.ADMIN_USER}/${CONFIG.ADMIN_PASS}.` }
-  };
-
-  window.verifyBadge = function(){
-    const badge = document.getElementById('badgeInput')?.value.trim()||'';
-    const out = document.getElementById('verifyResult');
-    if(!badge){ out.style.color='tomato'; out.textContent='Enter a badge number.'; return; }
-    if(badge.toUpperCase().startsWith(CONFIG.VERIFY_PREFIX)){ out.style.color='lightgreen'; out.innerHTML=`<strong>Verified:</strong> Badge ${badge} — Demo OK.` }
-    else{ out.style.color='tomato'; out.innerHTML=`<strong>Not Verified:</strong> Badge ${badge} — Demo failed.` }
-  };
-
-  // keyboard nav: Escape closes landing
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape'){ if(landing && !landing.hasAttribute('data-hidden')){ landing.setAttribute('data-hidden','true'); landing.style.display='none'; header.style.display='flex'; appRoot.style.display='block'; showPage('home', false); } }
-  });
-
-  // ----------------------------
-  // LANDING CANVAS (soft particles)
-  // ----------------------------
-  (function landingCanvas(){
-    const canvas = document.getElementById('landingCanvas'); if(!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = innerWidth, H = canvas.height = innerHeight;
-    let parts = [];
-    function make(){ parts=[]; const count = Math.max(40, Math.floor((W*H)/150000)); for(let i=0;i<count;i++){ parts.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*2.4+0.6, vx:(Math.random()-.5)*0.3, vy:(Math.random()-.5)*0.3, a:0.08+Math.random()*0.6 }); } }
-    function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; make(); }
-    window.addEventListener('resize', resize);
-    make();
-    function draw(){
-      if(canvas.parentElement.style.display==='none'){ ctx.clearRect(0,0,W,H); requestAnimationFrame(draw); return; }
-      ctx.clearRect(0,0,W,H);
-      const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)/1.2); g.addColorStop(0,'rgba(0,10,14,0.06)'); g.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-      for(const p of parts){
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle = `rgba(0,224,255,${p.a})`; ctx.shadowBlur = 12; ctx.shadowColor='rgba(0,224,255,0.9)'; ctx.fill();
-        p.x+=p.vx; p.y+=p.vy; if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10; if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10;
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
-
-  // ----------------------------
-  // APP BACKGROUND PARTICLES (runs only when home active)
-  // ----------------------------
-  (function appParticles(){
-    const canvas = document.createElement('canvas'); canvas.id='bgParticles'; canvas.style.position='fixed'; canvas.style.inset=0; canvas.style.zIndex=50; canvas.style.pointerEvents='none'; document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d'); let W=canvas.width=innerWidth, H=canvas.height=innerHeight; let parts=[]; let raf=null;
-    function make(){ parts=[]; const count = Math.max(40, Math.floor((W*H)/200000)); for(let i=0;i<count;i++){ parts.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.8+0.4, vx:(Math.random()-.5)*0.25, vy:(Math.random()-.5)*0.25, a:0.12+Math.random()*0.6 }); } }
-    function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; make(); } window.addEventListener('resize', resize);
-    make();
-    function draw(){
-      if(!window.isHomeActive){ ctx.clearRect(0,0,W,H); raf=null; return; }
-      ctx.clearRect(0,0,W,H);
-      const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)/1.4); g.addColorStop(0,'rgba(0,18,20,0.04)'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-      for(const p of parts){ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(0,224,255,${p.a})`; ctx.shadowBlur=10; ctx.shadowColor='rgba(0,224,255,0.9)'; ctx.fill(); p.x+=p.vx; p.y+=p.vy; if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10; if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10; }
-      raf = requestAnimationFrame(draw);
-    }
-    setInterval(()=>{ if(window.isHomeActive && !raf) draw(); }, 600);
-    if(window.isHomeActive) draw();
-  })();
-
-  // initial flag
-  window.isHomeActive = true;
-
+    // Trigger fade-ins on initial load
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".fade-in");
+      elements.forEach((el) => el.classList.add("visible"));
+    });
   </script>
 </body>
 </html>
-
