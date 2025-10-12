@@ -1,203 +1,496 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DreamKeepers | DK Media Group</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DreamKeepers — DK Media Group</title>
 
-  <!-- Elegant Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* GLOBAL LAYOUT & BACKGROUND */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Open Sans', sans-serif;
-      overflow-x: hidden;
-    }
+  /* =========================
+     GLOBAL
+     ========================= */
+  :root{
+    --bg:#000;
+    --text:#ffffff;
+    --muted:#bdbdbd;
+    --radius:12px;
+    --nav-h:72px;
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit}
 
-    /* NAVIGATION BAR */
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.9);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
-    }
+  /* =========================
+     TOP NAV (shared)
+     ========================= */
+  header.dk-nav{
+    position:sticky;
+    top:0;
+    z-index:1200;
+    height:var(--nav-h);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 20px;
+    gap:16px;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7));
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
+  .dk-brand{display:flex;align-items:center;gap:12px}
+  .dk-brand img{width:56px;height:56px;object-fit:contain;border-radius:8px;box-shadow: 0 10px 30px rgba(0,0,0,0.6)}
+  .brand-text{font-family:"Playfair Display", serif;font-size:1.05rem;color:var(--accent, #00e0ff)}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      margin: 0 5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      transition: all 0.3s ease;
-      border-bottom: 3px solid transparent;
-    }
+  .dk-links{display:flex;gap:8px;align-items:center}
+  .dk-tab{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 14px;border-radius:10px;background:#111;border:1px solid rgba(255,255,255,0.02);
+    color:#fff;font-weight:600;letter-spacing:0.6px; text-transform:uppercase;
+    transition: all .14s ease; cursor:pointer;
+  }
+  .dk-tab svg{width:18px;height:18px;flex-shrink:0}
+  .dk-tab:hover{ transform:translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.6); color:var(--accent) }
+  .dk-tab.active{ border-bottom:3px solid var(--accent); color:var(--accent) }
 
-    nav a:hover,
-    nav a.active {
-      color: #00e0ff;
-      border-bottom: 3px solid #00e0ff;
-      text-shadow: 0 0 10px #00e0ff;
-    }
+  /* =========================
+     LAYOUT: container to center content on pages
+     ========================= */
+  .page-wrap{
+    min-height: calc(100vh - var(--nav-h));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+  }
+  .panel{
+    width:100%;
+    max-width:var(--maxw);
+    border-radius:var(--radius);
+    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+    box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+    padding:28px;
+    position:relative;
+  }
 
-    /* SECTIONS */
-    section {
-      min-height: 100vh;
-      padding: 80px 10%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+  /* =========================
+     HERO / HOME (smaller title & spacing)
+     ========================= */
+  .home .panel{ display:flex; flex-direction:column; align-items:center; gap:10px }
+  .home .logo-large{ width:160px; height:auto; border-radius:10px; box-shadow: 0 16px 60px rgba(0,0,0,0.6); }
+  .home .title{
+    font-family:"Playfair Display", serif;
+    font-size:2.4rem;
+    margin:6px 0 2px;
+    color:var(--accent);
+    letter-spacing:0.4px;
+    text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 40%, transparent);
+    display:inline-block;
+  }
+  .home .subtitle{ color:var(--muted); font-size:1rem; max-width:700px; text-align:center }
 
-    /* HOME PAGE */
-    #home {
-      background: radial-gradient(circle at center, #001a1a, #000);
-    }
+  /* =========================
+     SPARKLE overlay
+     ========================= */
+  .sparkle{
+    position:absolute; inset:6px; border-radius:10px; pointer-events:none; filter:blur(8px);
+    box-shadow: 0 0 30px 10px color-mix(in srgb, var(--accent, #00e0ff) 18%, transparent), 40px 22px 40px rgba(255,255,255,0.06);
+    opacity:0.85; animation:sparkMove 14s linear infinite alternate; z-index:3;
+  }
+  @keyframes sparkMove{ 0%{transform:translate(0,0) scale(.98)} 50%{transform:translate(-18px,12px) scale(1.02)} 100%{transform:translate(10px,-10px) scale(.99)} }
 
-    #home img {
-      width: 150px;
-      height: auto;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px #00e0ff);
-    }
+  /* =========================
+     Section colors - use body class to set accent per page
+     ========================= */
+  body.home{ --accent:#00e0ff }
+  body.about{ --accent:#a000ff }
+  body.services{ --accent:#00ff8c }
+  body.contact{ --accent:#ffb400 }
+  body.admin{ --accent:#ff6b6b }
+  body.verify{ --accent:#7aa2ff }
 
-    #home h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      color: #00e0ff;
-      text-shadow: 0 0 15px #00e0ff;
-    }
+  /* =========================
+     SUBPAGE content style
+     ========================= */
+  .content-title{ font-family:"Playfair Display", serif; font-size:1.8rem; color:var(--accent); margin-bottom:8px; text-align:center; }
+  .content-text{ color:#e6e6e6; text-align:center; line-height:1.6; margin-bottom:8px; max-width:980px; margin-left:auto;margin-right:auto }
 
-    #home p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-    }
+  /* Grid / forms */
+  .form-grid{ display:grid; gap:10px; max-width:520px; margin:14px auto 0; grid-template-columns:1fr }
+  input.input, textarea.input, select.input{ padding:12px 14px; border-radius:10px; background:#0b0b0b; color:#fff; border:1px solid rgba(255,255,255,0.04) }
+  .btn{ display:inline-block; padding:10px 16px; border-radius:999px; background:var(--accent); color:#000; font-weight:700; border:none; cursor:pointer }
 
-    /* ABOUT PAGE */
-    #about {
-      background: linear-gradient(135deg, #1a1a1a, #000033);
-    }
+  /* footer */
+  footer.site-footer{ text-align:center; color:#9a9a9a; padding:18px 12px; margin-top:24px }
 
-    #about h1 {
-      color: #a000ff;
-      text-shadow: 0 0 10px #a000ff;
-    }
+  /* hide all sections by default; JS will show one */
+  section.site-section{ display:none; min-height: calc(100vh - var(--nav-h)); padding-top:20px; padding-bottom:20px }
 
-    /* SERVICES PAGE */
-    #services {
-      background: linear-gradient(135deg, #001a00, #000);
-    }
+  /* visible */
+  section.site-section.active{ display:block }
 
-    #services h1 {
-      color: #00ff8c;
-      text-shadow: 0 0 10px #00ff8c;
-    }
-
-    /* CONTACT PAGE */
-    #contact {
-      background: linear-gradient(135deg, #1a0000, #000);
-    }
-
-    #contact h1 {
-      color: #ff0055;
-      text-shadow: 0 0 10px #ff0055;
-    }
-
-    /* ADMIN LOGIN */
-    #admin {
-      background: linear-gradient(135deg, #101010, #000);
-    }
-
-    #admin h1 {
-      color: #00e0ff;
-      text-shadow: 0 0 10px #00e0ff;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #333;
-      border-radius: 5px;
-      background: #111;
-      color: white;
-    }
-
-    button {
-      padding: 10px 25px;
-      background: #00e0ff;
-      color: #000;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #00bcd4;
-    }
-
-    /* EMPLOYEE VERIFICATION */
-    #verify {
-      background: linear-gradient(135deg, #0d0d0d, #002244);
-    }
-
-    #verify h1 {
-      color: #00e0ff;
-      text-shadow: 0 0 10px #00e0ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #999;
-      background-color: #000;
-      border-top: 1px solid #111;
-    }
+  /* responsiveness */
+  @media (max-width:880px){
+    .dk-links{ display:none } /* keep header simple on small screens */
+    .panel{ padding:18px }
+    .home .title{ font-size:1.8rem }
+    .home .logo-large{ width:120px }
+  }
   </style>
 </head>
+<body class="home">
 
-<body>
-  <nav>
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="#admin">Admin Login</a>
-    <a href="#verify">Employee Verification</a>
-  </nav>
+  <!-- HEADER / NAV -->
+  <header class="dk-nav" role="banner">
+    <div class="dk-brand" aria-hidden="false">
+      <img src="images/dk_logo.png" alt="DK / DreamKeepers logo" onerror="this.style.display='none'">
+      <div class="brand-text">DreamKeepers</div>
+    </div>
 
-  <section id="home">
-    <img src="images/dk_logo.png" alt="DreamKeepers Logo" />
-    <h1>DreamKeepers</h1>
-    <p>Don't ever stop dreaming. Make your dreams a reality.</p>
+    <nav class="dk-links" role="navigation" aria-label="Main">
+      <a class="dk-tab" href="#/home" data-target="home" id="link-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 10.5 L12 3 L21 10.5 V20 a1 1 0 0 1 -1 1 H4 a1 1 0 0 1 -1 -1 Z" stroke-width="1.2"/></svg>Home</a>
+      <a class="dk-tab" href="#/about" data-target="about" id="link-about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3" stroke-width="1.2"/><path d="M5 20c2-3 7-4 7-4s5 1 7 4" stroke-width="1.2"/></svg>About</a>
+      <a class="dk-tab" href="#/services" data-target="services" id="link-services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="6" rx="1.5" stroke-width="1.2"/><rect x="3" y="14" width="18" height="6" rx="1.5" stroke-width="1.2"/></svg>Services</a>
+      <a class="dk-tab" href="#/contact" data-target="contact" id="link-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 8V7a3 3 0 0 0 -3 -3H6a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h12a3 3 0 0 0 3 -3v-1" stroke-width="1.2"/></svg>Contact</a>
+      <a class="dk-tab" href="#/admin" data-target="admin" id="link-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h18M7 7v-2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v2" stroke-width="1.2"/></svg>Admin</a>
+      <a class="dk-tab" href="#/verify" data-target="verify" id="link-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5v14" stroke-width="1.2"/></svg>Verify</a>
+    </nav>
+  </header>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="site-section active">
+    <div class="page-wrap home">
+      <div class="panel">
+        <div class="home-inner">
+          <img src="images/dk_logo.png" alt="DreamKeepers logo" class="logo-large" onerror="this.style.display='none'">
+          <h2 class="title"><span class="line1">Dream</span> <span class="line2">Keepers</span></h2>
+          <div class="subtitle">Don't ever stop dreaming; make your dreams a reality.</div>
+
+          <div class="sparkle" aria-hidden="true"></div>
+
+          <div style="margin-top:14px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a class="btn" href="#/about" data-target="about">About</a>
+            <a class="btn" href="#/services" data-target="services">Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="about">
-    <h1>About Us</h1>
-    <p>DK Media Group and DK Tech stand at the intersection of creativity and innovation
+  <!-- ABOUT SECTION -->
+  <section id="about" class="site-section" aria-labelledby="about-heading">
+    <div class="page-wrap about">
+      <div class="panel">
+        <h3 id="about-heading" class="content-title">About DK Media Group</h3>
+        <p class="content-text">DK Media Group LLC is an umbrella company consolidating media production and technology services. We produce high-quality media content, build AI-driven tools, and design secure tech integrations for enterprise and creative clients. Our mission emphasizes privacy, security, and creative excellence.</p>
+
+        <div class="card" style="margin-top:18px;padding:18px;border-radius:10px;background:rgba(0,0,0,0.35)">
+          <h4 style="margin:0 0 8px;color:var(--accent)">Founder — Deaundrey “DK” Krueger</h4>
+          <p style="margin:0;color:#ddd">Visionary, AI Integration Lead, and founder of DK Media Group. Education: ITT Technical Institute. Roles: Media company owner, AI developer, software/hardware specialist.</p>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px">
+          <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;">
+            <strong>Co-developer:</strong><br>Matthew Hartzell
+          </div>
+          <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;">
+            <strong>Account Manager:</strong><br>Steve Cartwright
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="site-section" aria-labelledby="services-heading">
+    <div class="page-wrap services">
+      <div class="panel">
+        <h3 id="services-heading" class="content-title">Services</h3>
+        <p class="content-text">We offer media production, AI/ML integration, web & app development, full-stack infrastructure, voice cloning research (ethical use), and secure hosting solutions. Our approach blends creative storytelling with technical precision.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px">
+          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <h4 style="margin:0 0 8px;color:var(--accent)">Media Production</h4>
+            <p style="margin:0;color:#ddd">Video, audio, and visual design for web and broadcast.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <h4 style="margin:0 0 8px;color:var(--accent)">AI Integration</h4>
+            <p style="margin:0;color:#ddd">Custom AI modules, integrations with devices and cloud.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <h4 style="margin:0 0 8px;color:var(--accent)">Security & Hosting</h4>
+            <p style="margin:0;color:#ddd">Encrypted storage, NAS, and secure deployment practices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="site-section" aria-labelledby="contact-heading">
+    <div class="page-wrap contact">
+      <div class="panel">
+        <h3 id="contact-heading" class="content-title">Contact</h3>
+        <p class="content-text">For partnerships, press, or services inquiries, reach out to our team. Use the contact form below or call the company line.</p>
+
+        <form id="contactForm" class="form-grid" onsubmit="handleContact(event)">
+          <input class="input" id="c_name" placeholder="Full name" required>
+          <input class="input" id="c_email" type="email" placeholder="Email" required>
+          <textarea class="input" id="c_message" rows="5" placeholder="Message" required></textarea>
+          <div style="display:flex;gap:10px;justify-content:center">
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+
+        <div id="contactMsg" style="margin-top:10px;text-align:center;color:var(--muted)"></div>
+
+        <div style="margin-top:18px;text-align:center;color:#ccc">
+          <p>Phone: <strong>256-348-8821</strong></p>
+          <p>Email: <strong>info@dreamkeepers.net</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN PAGE (demo) -->
+  <section id="admin" class="site-section" aria-labelledby="admin-heading">
+    <div class="page-wrap admin">
+      <div class="panel">
+        <h3 id="admin-heading" class="content-title">Employee Admin Login</h3>
+        <p class="content-text">This is a demo login UI. Replace with secure server-side authentication for production use.</p>
+
+        <form id="adminForm" class="form-grid" onsubmit="demoAdminLogin(event)">
+          <label for="adm_user" style="color:var(--muted);text-align:left">Username</label>
+          <input id="adm_user" class="input" required>
+          <label for="adm_pass" style="color:var(--muted);text-align:left">Password</label>
+          <input id="adm_pass" type="password" class="input" required>
+          <div style="display:flex;gap:10px;justify-content:center">
+            <button class="btn" type="submit">Sign In</button>
+          </div>
+        </form>
+
+        <div id="adminMsg" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERIFY PAGE (demo) -->
+  <section id="verify" class="site-section" aria-labelledby="verify-heading">
+    <div class="page-wrap verify">
+      <div class="panel">
+        <h3 id="verify-heading" class="content-title">Employee Badge Verification</h3>
+        <p class="content-text">Enter a badge or employee number to verify authorization. This is a demo — integrate your internal API for production verification.</p>
+
+        <div class="form-grid" style="margin-top:10px">
+          <input id="badgeInput" class="input" placeholder="Badge / Employee ID e.g. DK-1024">
+          <div style="display:flex;gap:10px;justify-content:center"><button class="btn" onclick="verifyBadge()">Verify</button></div>
+        </div>
+
+        <div id="verifyResult" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    © 2025 DK Media Group LLC — DreamKeepers.net
+  </footer>
+
+  <script>
+  /* =========================
+     Routing & UI glue (single file "multi-page")
+     - Hash-based: #/home, #/about, #/services, #/contact, #/admin, #/verify
+     - Shows only the active section
+     ========================= */
+  (function(){
+    const sections = Array.from(document.querySelectorAll('section.site-section'));
+    const links = Array.from(document.querySelectorAll('.dk-tab'));
+    const body = document.body;
+
+    function showSection(name, push=true){
+      // name like 'home', 'about'
+      sections.forEach(s => s.classList.toggle('active', s.id === name));
+      // update active link
+      links.forEach(a => a.classList.toggle('active', (a.dataset.target === name)));
+      // set body class for color theme
+      document.body.className = name || 'home';
+      if(push){
+        location.hash = '#/' + name;
+      }
+      // Manage particle visibility: only show sparkle on home
+      // (sparkle element exists inside home panel)
+      // For accessibility, focus title
+      const active = document.getElementById(name);
+      if(active){
+        const title = active.querySelector('.content-title, .title, h3, h2');
+        if(title && title.focus) title.setAttribute('tabindex','-1'), title.focus();
+      }
+    }
+
+    // On load: read hash
+    function parseHash(){
+      const h = location.hash || '#/home';
+      const parts = h.split('/');
+      const name = parts[1] || 'home';
+      return name;
+    }
+
+    // Wire link clicks: prevent default and route
+    links.forEach(a => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = a.dataset.target;
+        showSection(target, true);
+        window.scrollTo({top:0,behavior:'instant'});
+      });
+    });
+
+    // On hash change (back/forward)
+    window.addEventListener('hashchange', function(){
+      const name = parseHash();
+      showSection(name,false);
+    });
+
+    // initial show
+    const initial = parseHash();
+    showSection(initial,false);
+
+    // Contact form demo handler
+    window.handleContact = function(e){
+      e.preventDefault();
+      const name = document.getElementById('c_name').value.trim();
+      const email = document.getElementById('c_email').value.trim();
+      const msgBox = document.getElementById('contactMsg');
+      if(!name || !email){
+        msgBox.style.color='tomato';
+        msgBox.textContent = 'Please fill name and email.';
+        return;
+      }
+      msgBox.style.color='lightgreen';
+      msgBox.textContent = 'Thanks ' + name + '. This is a demo — hook a backend to send messages.';
+      document.getElementById('contactForm').reset();
+    };
+
+    // Admin demo login
+    window.demoAdminLogin = function(e){
+      e.preventDefault();
+      const user = document.getElementById('adm_user').value.trim();
+      const pass = document.getElementById('adm_pass').value;
+      const out = document.getElementById('adminMsg');
+      if(user.toLowerCase()==='admin' && pass==='demo'){
+        out.style.color='lightgreen';
+        out.textContent='Demo login successful (placeholder). Implement secure backend for real login.';
+      } else {
+        out.style.color='tomato';
+        out.textContent='Demo login failed. Use admin/demo to simulate success.';
+      }
+    };
+
+    // Badge verify demo
+    window.verifyBadge = function(){
+      const badge = document.getElementById('badgeInput').value.trim();
+      const out = document.getElementById('verifyResult');
+      if(!badge){ out.style.color='tomato'; out.textContent='Enter a badge number.'; return; }
+      if(badge.toUpperCase().startsWith('DK')){
+        out.style.color='lightgreen';
+        out.innerHTML = `<strong>Verified:</strong> Badge ${badge} — Demo OK.`;
+      } else {
+        out.style.color='tomato';
+        out.innerHTML = `<strong>Not Verified:</strong> Badge ${badge} — Demo failed.`;
+      }
+    };
+
+    // small helper: showHome on logo click
+    const brand = document.querySelector('.dk-brand');
+    if(brand){
+      brand.addEventListener('click', function(e){
+        showSection('home', true);
+      });
+    }
+
+  })();
+
+  /* =========================
+     Particle background (only visually on home)
+     Keep lightweight: canvas draws soft blue dots that float.
+     ========================= */
+  (function(){
+    const canvas = document.createElement('canvas');
+    canvas.id='bgParticles';
+    canvas.style.position='fixed';
+    canvas.style.inset=0;
+    canvas.style.zIndex='0';
+    canvas.style.pointerEvents='none';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = innerWidth;
+    let H = canvas.height = innerHeight;
+    let parts = [];
+
+    function makeParticles(){
+      parts = [];
+      const count = Math.max(30, Math.floor((W*H)/140000)); // scale with viewport
+      for(let i=0;i<count;i++){
+        parts.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: Math.random()*2.2 + 0.6,
+          vx: (Math.random()-0.5)*0.3,
+          vy: (Math.random()-0.5)*0.3,
+          a: 0.4 + Math.random()*0.6
+        });
+      }
+    }
+
+    function resize(){
+      W = canvas.width = innerWidth;
+      H = canvas.height = innerHeight;
+      makeParticles();
+    }
+    window.addEventListener('resize', resize);
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      // subtle background glow in center
+      const grd = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)/1.2);
+      grd.addColorStop(0, 'rgba(0, 18, 20, 0.06)');
+      grd.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,W,H);
+
+      for(let p of parts){
+        // only draw when home is active (check body class)
+        if(!document.body.classList.contains('home')) continue;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(0, 224, 255, ${p.a})`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = 'rgba(0,224,255,0.8)';
+        ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x < -10) p.x = W+10;
+        if(p.x > W+10) p.x = -10;
+        if(p.y < -10) p.y = H+10;
+        if(p.y > H+10) p.y = -10;
+      }
+      requestAnimationFrame(draw);
+    }
+
+    makeParticles();
+    draw();
+  })();
+  </script>
+</body>
+</html>
