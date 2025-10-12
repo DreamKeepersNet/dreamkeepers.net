@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DreamKeepers — DK Media Group</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -101,11 +100,15 @@
   }
   .home .subtitle{ color:var(--muted); font-size:1rem; max-width:700px; text-align:center }
 
+  /* HOME action buttons */
+  .home-actions{ margin-top:14px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+
   /* =========================
-     SPARKLE overlay
+     SPARKLE overlay (visual effect on home panel)
      ========================= */
   .sparkle{
     position:absolute; inset:6px; border-radius:10px; pointer-events:none; filter:blur(8px);
+    /* Sparkle color pulls from the current body--accent variable */
     box-shadow: 0 0 30px 10px color-mix(in srgb, var(--accent, #00e0ff) 18%, transparent), 40px 22px 40px rgba(255,255,255,0.06);
     opacity:0.85; animation:sparkMove 14s linear infinite alternate; z-index:3;
   }
@@ -127,9 +130,27 @@
   .content-title{ font-family:"Playfair Display", serif; font-size:1.8rem; color:var(--accent); margin-bottom:8px; text-align:center; }
   .content-text{ color:#e6e6e6; text-align:center; line-height:1.6; margin-bottom:8px; max-width:980px; margin-left:auto;margin-right:auto }
 
+  /* About Section Team Cards */
+  .founder-card{ margin-top:18px; padding:18px; border-radius:10px; background:rgba(0,0,0,0.35) }
+  .founder-card h4{ margin:0 0 8px; color:var(--accent) }
+  .founder-card p{ margin:0; color:#ddd }
+  .team-grid{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:14px }
+  .team-member{ background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; }
+
+  /* Services Section Stat Grid */
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:16px }
+  .stat-card{ background:rgba(255,255,255,0.02); padding:14px; border-radius:10px }
+  .stat-card h4{ margin:0 0 8px; color:var(--accent) }
+  .stat-card p{ margin:0; color:#ddd }
+
+  /* Contact Section */
+  .contact-info{ margin-top:18px; text-align:center; color:#ccc }
+
   /* Grid / forms */
   .form-grid{ display:grid; gap:10px; max-width:520px; margin:14px auto 0; grid-template-columns:1fr }
   input.input, textarea.input, select.input{ padding:12px 14px; border-radius:10px; background:#0b0b0b; color:#fff; border:1px solid rgba(255,255,255,0.04) }
+  .form-label{ color:var(--muted); text-align:left }
+  .form-actions{ display:flex; gap:10px; justify-content:center }
   .btn{ display:inline-block; padding:10px 16px; border-radius:999px; background:var(--accent); color:#000; font-weight:700; border:none; cursor:pointer }
 
   /* footer */
@@ -152,7 +173,6 @@
 </head>
 <body class="home">
 
-  <!-- HEADER / NAV -->
   <header class="dk-nav" role="banner">
     <div class="dk-brand" aria-hidden="false">
       <img src="images/dk_logo.png" alt="DK / DreamKeepers logo" onerror="this.style.display='none'">
@@ -169,7 +189,6 @@
     </nav>
   </header>
 
-  <!-- HOME SECTION -->
   <section id="home" class="site-section active">
     <div class="page-wrap home">
       <div class="panel">
@@ -180,7 +199,7 @@
 
           <div class="sparkle" aria-hidden="true"></div>
 
-          <div style="margin-top:14px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <div class="home-actions">
             <a class="btn" href="#/about" data-target="about">About</a>
             <a class="btn" href="#/services" data-target="services">Services</a>
           </div>
@@ -189,23 +208,22 @@
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
   <section id="about" class="site-section" aria-labelledby="about-heading">
     <div class="page-wrap about">
       <div class="panel">
         <h3 id="about-heading" class="content-title">About DK Media Group</h3>
         <p class="content-text">DK Media Group LLC is an umbrella company consolidating media production and technology services. We produce high-quality media content, build AI-driven tools, and design secure tech integrations for enterprise and creative clients. Our mission emphasizes privacy, security, and creative excellence.</p>
 
-        <div class="card" style="margin-top:18px;padding:18px;border-radius:10px;background:rgba(0,0,0,0.35)">
-          <h4 style="margin:0 0 8px;color:var(--accent)">Founder — Deaundrey “DK” Krueger</h4>
-          <p style="margin:0;color:#ddd">Visionary, AI Integration Lead, and founder of DK Media Group. Education: ITT Technical Institute. Roles: Media company owner, AI developer, software/hardware specialist.</p>
+        <div class="founder-card">
+          <h4>Founder — Deaundrey “DK” Krueger</h4>
+          <p>Visionary, AI Integration Lead, and founder of DK Media Group. Education: ITT Technical Institute. Roles: Media company owner, AI developer, software/hardware specialist.</p>
         </div>
 
-        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:14px">
-          <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;">
+        <div class="team-grid">
+          <div class="team-member">
             <strong>Co-developer:</strong><br>Matthew Hartzell
           </div>
-          <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;">
+          <div class="team-member">
             <strong>Account Manager:</strong><br>Steve Cartwright
           </div>
         </div>
@@ -213,32 +231,30 @@
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
   <section id="services" class="site-section" aria-labelledby="services-heading">
     <div class="page-wrap services">
       <div class="panel">
         <h3 id="services-heading" class="content-title">Services</h3>
         <p class="content-text">We offer media production, AI/ML integration, web & app development, full-stack infrastructure, voice cloning research (ethical use), and secure hosting solutions. Our approach blends creative storytelling with technical precision.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px">
-          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
-            <h4 style="margin:0 0 8px;color:var(--accent)">Media Production</h4>
-            <p style="margin:0;color:#ddd">Video, audio, and visual design for web and broadcast.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <h4>Media Production</h4>
+            <p>Video, audio, and visual design for web and broadcast.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
-            <h4 style="margin:0 0 8px;color:var(--accent)">AI Integration</h4>
-            <p style="margin:0;color:#ddd">Custom AI modules, integrations with devices and cloud.</p>
+          <div class="stat-card">
+            <h4>AI Integration</h4>
+            <p>Custom AI modules, integrations with devices and cloud.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
-            <h4 style="margin:0 0 8px;color:var(--accent)">Security & Hosting</h4>
-            <p style="margin:0;color:#ddd">Encrypted storage, NAS, and secure deployment practices.</p>
+          <div class="stat-card">
+            <h4>Security & Hosting</h4>
+            <p>Encrypted storage, NAS, and secure deployment practices.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
   <section id="contact" class="site-section" aria-labelledby="contact-heading">
     <div class="page-wrap contact">
       <div class="panel">
@@ -249,14 +265,14 @@
           <input class="input" id="c_name" placeholder="Full name" required>
           <input class="input" id="c_email" type="email" placeholder="Email" required>
           <textarea class="input" id="c_message" rows="5" placeholder="Message" required></textarea>
-          <div style="display:flex;gap:10px;justify-content:center">
+          <div class="form-actions">
             <button class="btn" type="submit">Send Message</button>
           </div>
         </form>
 
         <div id="contactMsg" style="margin-top:10px;text-align:center;color:var(--muted)"></div>
 
-        <div style="margin-top:18px;text-align:center;color:#ccc">
+        <div class="contact-info">
           <p>Phone: <strong>256-348-8821</strong></p>
           <p>Email: <strong>info@dreamkeepers.net</strong></p>
         </div>
@@ -264,7 +280,6 @@
     </div>
   </section>
 
-  <!-- ADMIN PAGE (demo) -->
   <section id="admin" class="site-section" aria-labelledby="admin-heading">
     <div class="page-wrap admin">
       <div class="panel">
@@ -272,11 +287,11 @@
         <p class="content-text">This is a demo login UI. Replace with secure server-side authentication for production use.</p>
 
         <form id="adminForm" class="form-grid" onsubmit="demoAdminLogin(event)">
-          <label for="adm_user" style="color:var(--muted);text-align:left">Username</label>
+          <label for="adm_user" class="form-label">Username</label>
           <input id="adm_user" class="input" required>
-          <label for="adm_pass" style="color:var(--muted);text-align:left">Password</label>
+          <label for="adm_pass" class="form-label">Password</label>
           <input id="adm_pass" type="password" class="input" required>
-          <div style="display:flex;gap:10px;justify-content:center">
+          <div class="form-actions">
             <button class="btn" type="submit">Sign In</button>
           </div>
         </form>
@@ -286,17 +301,16 @@
     </div>
   </section>
 
-  <!-- VERIFY PAGE (demo) -->
   <section id="verify" class="site-section" aria-labelledby="verify-heading">
     <div class="page-wrap verify">
       <div class="panel">
         <h3 id="verify-heading" class="content-title">Employee Badge Verification</h3>
         <p class="content-text">Enter a badge or employee number to verify authorization. This is a demo — integrate your internal API for production verification.</p>
 
-        <div class="form-grid" style="margin-top:10px">
+        <form class="form-grid" onsubmit="event.preventDefault(); verifyBadge();">
           <input id="badgeInput" class="input" placeholder="Badge / Employee ID e.g. DK-1024">
-          <div style="display:flex;gap:10px;justify-content:center"><button class="btn" onclick="verifyBadge()">Verify</button></div>
-        </div>
+          <div class="form-actions"><button class="btn" type="submit">Verify</button></div>
+        </form>
 
         <div id="verifyResult" style="margin-top:12px;text-align:center;color:var(--muted)"></div>
       </div>
@@ -308,29 +322,39 @@
   </footer>
 
   <script>
+  // Global flag for the particle system
+  window.isHomeActive = false;
+
+  // Centralized configuration for demo/magic strings
+  const CONFIG = {
+    ADMIN_USER: 'admin',
+    ADMIN_PASS: 'demo',
+    VERIFY_PREFIX: 'DK'
+  };
+
   /* =========================
      Routing & UI glue (single file "multi-page")
-     - Hash-based: #/home, #/about, #/services, #/contact, #/admin, #/verify
-     - Shows only the active section
      ========================= */
   (function(){
     const sections = Array.from(document.querySelectorAll('section.site-section'));
     const links = Array.from(document.querySelectorAll('.dk-tab'));
-    const body = document.body;
 
     function showSection(name, push=true){
       // name like 'home', 'about'
       sections.forEach(s => s.classList.toggle('active', s.id === name));
+
       // update active link
       links.forEach(a => a.classList.toggle('active', (a.dataset.target === name)));
-      // set body class for color theme
+
+      // set body class for color theme and update global flag for particle script
       document.body.className = name || 'home';
+      window.isHomeActive = (name === 'home');
+
       if(push){
         location.hash = '#/' + name;
       }
-      // Manage particle visibility: only show sparkle on home
-      // (sparkle element exists inside home panel)
-      // For accessibility, focus title
+
+      // For accessibility, focus the main title of the active section
       const active = document.getElementById(name);
       if(active){
         const title = active.querySelector('.content-title, .title, h3, h2');
@@ -372,13 +396,15 @@
       const name = document.getElementById('c_name').value.trim();
       const email = document.getElementById('c_email').value.trim();
       const msgBox = document.getElementById('contactMsg');
+
       if(!name || !email){
         msgBox.style.color='tomato';
         msgBox.textContent = 'Please fill name and email.';
         return;
       }
       msgBox.style.color='lightgreen';
-      msgBox.textContent = 'Thanks ' + name + '. This is a demo — hook a backend to send messages.';
+      // Use the CONFIG object for clearer code separation (though not strictly necessary here)
+      msgBox.textContent = `Thanks ${name}. This is a demo — hook a backend to send messages.`;
       document.getElementById('contactForm').reset();
     };
 
@@ -388,12 +414,14 @@
       const user = document.getElementById('adm_user').value.trim();
       const pass = document.getElementById('adm_pass').value;
       const out = document.getElementById('adminMsg');
-      if(user.toLowerCase()==='admin' && pass==='demo'){
+
+      if(user.toLowerCase() === CONFIG.ADMIN_USER && pass === CONFIG.ADMIN_PASS){
         out.style.color='lightgreen';
         out.textContent='Demo login successful (placeholder). Implement secure backend for real login.';
+        document.getElementById('adminForm').reset(); // Clear form on success
       } else {
         out.style.color='tomato';
-        out.textContent='Demo login failed. Use admin/demo to simulate success.';
+        out.textContent=`Demo login failed. Use ${CONFIG.ADMIN_USER}/${CONFIG.ADMIN_PASS} to simulate success.`;
       }
     };
 
@@ -401,13 +429,15 @@
     window.verifyBadge = function(){
       const badge = document.getElementById('badgeInput').value.trim();
       const out = document.getElementById('verifyResult');
+
       if(!badge){ out.style.color='tomato'; out.textContent='Enter a badge number.'; return; }
-      if(badge.toUpperCase().startsWith('DK')){
+
+      if(badge.toUpperCase().startsWith(CONFIG.VERIFY_PREFIX)){
         out.style.color='lightgreen';
         out.innerHTML = `<strong>Verified:</strong> Badge ${badge} — Demo OK.`;
       } else {
         out.style.color='tomato';
-        out.innerHTML = `<strong>Not Verified:</strong> Badge ${badge} — Demo failed.`;
+        out.innerHTML = `<strong>Not Verified:</strong> Badge ${badge} — Demo failed. (Must start with ${CONFIG.VERIFY_PREFIX})`;
       }
     };
 
@@ -422,8 +452,8 @@
   })();
 
   /* =========================
-     Particle background (only visually on home)
-     Keep lightweight: canvas draws soft blue dots that float.
+     Particle background
+     - Pauses animation when not on the home page for performance.
      ========================= */
   (function(){
     const canvas = document.createElement('canvas');
@@ -437,6 +467,7 @@
     let W = canvas.width = innerWidth;
     let H = canvas.height = innerHeight;
     let parts = [];
+    let animationFrameId; // To manage pausing/resuming
 
     function makeParticles(){
       parts = [];
@@ -461,7 +492,15 @@
     window.addEventListener('resize', resize);
 
     function draw(){
+      if (!window.isHomeActive) {
+        // If not on home, stop the loop and clear the canvas for performance
+        ctx.clearRect(0,0,W,H);
+        animationFrameId = null;
+        return;
+      }
+
       ctx.clearRect(0,0,W,H);
+      
       // subtle background glow in center
       const grd = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)/1.2);
       grd.addColorStop(0, 'rgba(0, 18, 20, 0.06)');
@@ -470,8 +509,6 @@
       ctx.fillRect(0,0,W,H);
 
       for(let p of parts){
-        // only draw when home is active (check body class)
-        if(!document.body.classList.contains('home')) continue;
         ctx.beginPath();
         ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
         ctx.fillStyle = `rgba(0, 224, 255, ${p.a})`;
@@ -480,16 +517,29 @@
         ctx.fill();
         p.x += p.vx;
         p.y += p.vy;
+        
+        // Wrap particles around screen edges
         if(p.x < -10) p.x = W+10;
         if(p.x > W+10) p.x = -10;
         if(p.y < -10) p.y = H+10;
         if(p.y > H+10) p.y = -10;
       }
-      requestAnimationFrame(draw);
+      
+      animationFrameId = requestAnimationFrame(draw);
     }
 
+    // Monitor for changes to the global flag and start/stop drawing
+    setInterval(() => {
+        if (window.isHomeActive && !animationFrameId) {
+            draw();
+        }
+    }, 1000); // Check every second
+
     makeParticles();
-    draw();
+    // Start the initial drawing only if the page is 'home' on load
+    if (window.isHomeActive) {
+        draw();
+    }
   })();
   </script>
 </body>
