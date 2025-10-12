@@ -16,47 +16,85 @@
     }
 
     header {
-      background: linear-gradient(90deg, #000, #111);
-      padding: 40px 20px;
+      background: radial-gradient(circle, #000 70%, #111);
+      padding: 60px 20px;
       border-bottom: 1px solid #333;
+      position: relative;
     }
 
     .logo {
-      width: 120px;
+      width: 160px;
       height: auto;
       margin-bottom: 10px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin: 10px 0;
+      color: #0ff;
+      text-shadow: 0 0 15px #0ff;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 30px;
+      font-style: italic;
     }
 
     nav a {
       color: #0ff;
       margin: 0 15px;
       text-decoration: none;
-      transition: color 0.3s;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
     }
 
     nav a:hover {
       color: #fff;
+      transform: scale(1.1);
     }
 
     .section {
-      padding: 60px 20px;
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .team {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
     }
 
     .member {
-      width: 200px;
+      width: 220px;
+      background: rgba(20, 20, 20, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #0ff;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #0ff;
     }
 
     .member img {
       width: 100%;
       border-radius: 10px;
       border: 2px solid #0ff;
+      margin-bottom: 10px;
     }
 
     .gallery {
@@ -75,13 +113,19 @@
       align-items: center;
       justify-content: center;
       border-radius: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.08);
     }
 
     footer {
-      padding: 20px;
+      padding: 30px;
       border-top: 1px solid #333;
       font-size: 0.9em;
       color: #888;
+      background: #000;
     }
 
     .fade-in {
@@ -101,7 +145,7 @@
   <header class="fade-in">
     <img src="images/DK_logo.png" alt="DreamKeepers Logo" class="logo" />
     <h1>DreamKeepers</h1>
-    <p class="slogan">Don't ever stop dreaming; make your dreams a reality.</p>
+    <p class="slogan">“Some chase sleep to find dreams; others stay awake to build them.”</p>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About Us</a>
@@ -113,7 +157,7 @@
 
   <section id="home" class="section fade-in">
     <h2>Welcome to DreamKeepers</h2>
-    <p>Your gateway to creativity, technology, and innovation. Explore our world of media production, AI integration, and tech development.</p>
+    <p>Where ambition meets creation. We build the dreams others only imagine — through technology, art, and innovation.</p>
   </section>
 
   <section id="about" class="section fade-in">
@@ -128,36 +172,36 @@
       <div class="member">
         <img src="images/Matthew.jpg" alt="Matthew Hartzell" />
         <h3>Matthew Hartzell</h3>
-        <p>Lead Developer for M-Hart 1.0 and Co-Partner in the DK AI initiative. Expert in AI architecture and coding systems.</p>
+        <p>Vice President & C.F.O. of DK Media Group. Co-partner in the DK AI Initiative and developer support for system operations.</p>
       </div>
 
       <div class="member">
-        <img src="images/Kenneth.jpg" alt="Kenneth" />
-        <h3>Kenneth</h3>
-        <p>Technical Coordinator for DK Tech. Oversees integration and testing for advanced software systems.</p>
+        <img src="images/Kenneth.jpg" alt="Kenneth Miles" />
+        <h3>Kenneth Miles</h3>
+        <p>Vice President of Security Operations. Oversees system protection, access control, and operational security.</p>
       </div>
 
       <div class="member">
         <img src="images/Steve.jpg" alt="Steve Cartwright" />
         <h3>Steve Cartwright</h3>
-        <p>Account Manager for DK Media Group. Handles client relations and organizational logistics.</p>
+        <p>Production Manager and Events Coordinator. Handles logistics, events, and team operations for DK Media Group.</p>
       </div>
     </div>
   </section>
 
   <section id="projects" class="section fade-in">
     <h2>Our Projects</h2>
-    <p>Featuring DK Media Group, M-Hart 1.0, and the DreamKeepers Initiative. Each project showcases innovation, design, and technical excellence.</p>
+    <p>Featuring DK Media Group and DK Tech divisions. Explore the future through interactive galleries below.</p>
     <div class="gallery">
-      <div class="gallery-item">Future Project Showcase</div>
-      <div class="gallery-item">Tech Demo Reel</div>
-      <div class="gallery-item">AI Integration Display</div>
+      <div class="gallery-item">DK Media Group Gallery</div>
+      <div class="gallery-item">DK Tech Showcase</div>
+      <div class="gallery-item">Upcoming Innovations</div>
     </div>
   </section>
 
   <section id="events" class="section fade-in">
     <h2>Upcoming Events</h2>
-    <p>Stay tuned for our live showcases, podcast appearances, and tech demonstrations across multiple platforms.</p>
+    <p>Stay tuned for live showcases, media premieres, and DK Tech presentations across multiple platforms.</p>
     <div class="calendar-placeholder">[Calendar Integration Coming Soon]</div>
   </section>
 
@@ -175,6 +219,7 @@
   </footer>
 
   <script>
+    // Smooth fade-in animation on scroll
     window.addEventListener("scroll", () => {
       const elements = document.querySelectorAll(".fade-in");
       const triggerBottom = window.innerHeight * 0.85;
@@ -185,7 +230,6 @@
       });
     });
 
-    // Trigger fade-ins on initial load
     document.addEventListener("DOMContentLoaded", () => {
       const elements = document.querySelectorAll(".fade-in");
       elements.forEach((el) => el.classList.add("visible"));
