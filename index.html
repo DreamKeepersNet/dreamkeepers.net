@@ -2,119 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dream Keepers — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #0a0a0a;
-      --text-main: #ffffff;
-      --text-secondary: #b0b0b0;
-      --accent-gold: #d4af37;
-      --accent-silver: #888888;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Keepers</title>
+  <link rel="stylesheet" href="style.css">
 
+  <style>
+    /* Reset and layout */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: "Poppins", sans-serif;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 80px;
-      background-color: rgba(0, 0, 0, 0.7);
-      position: fixed;
+    body, html {
+      height: 100%;
       width: 100%;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(6px);
+      font-family: "Poppins", sans-serif;
+      color: #ffffff;
+      background-color: #0e0e0e;
+      overflow: hidden;
     }
 
-    header img {
-      width: 120px;
-      height: auto;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-main);
-      margin-left: 40px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-gold);
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: url("images/logo.png") no-repeat center center/contain;
+    /* Splash screen container */
+    .splash {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      color: var(--text-main);
-      padding: 0 20px;
+      background: url('images/logo.png') no-repeat center center/contain;
+      background-color: #000000;
+      background-size: 40%;
     }
 
-    .hero h1 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 4rem;
+    .splash-content {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
       letter-spacing: 2px;
+      margin-bottom: 1rem;
       text-transform: uppercase;
-      margin-bottom: 15px;
     }
 
-    .hero p {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      line-height: 1.6;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      color: #cccccc;
     }
 
-    /* Divisions */
-    .divisions {
-      padding: 120px 10%;
-      background-color: #111;
-      text-align: center;
+    .enter-btn {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .divisions h2 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 2.5rem;
-      color: var(--accent-gold);
-      margin-bottom: 60px;
-      position: relative;
-    }
-
-    .division-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-    }
-
-    .division {
+    .enter-btn:hover {
       background-color: #1a1a1a;
-      border: 1px solid var(--accent-silver);
-      padding: 40px;
-      border-radius: 15px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      color: #ffffff;
+      border: 2px solid #ffffff;
     }
+  </style>
+</head>
 
-    .division:hover {
-      transform
+<body>
+  <section class="splash">
+    <div class="splash-content">
+      <h1>Dream Keepers</h1>
+      <p>While people are asleep dreaming, Dream Keepers are awake creating their dreams.</p>
+      <button class="enter-btn" onclick="location.href='home.html'">Enter Site</button>
+    </div>
+  </section>
+</body>
+</html>
+
 
 
