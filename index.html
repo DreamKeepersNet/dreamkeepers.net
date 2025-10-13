@@ -1,43 +1,176 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>DreamKeepers — Home</title><link rel="icon" href="/assets/images/logo.png"/><style>
-body{margin:0;font-family:'Poppins',sans-serif;background-color:#000;color:#fff;line-height:1.6;scroll-behavior:smooth;}
-header{display:flex;justify-content:space-between;align-items:center;background:#000;padding:10px 30px;position:sticky;top:0;z-index:100;}
-.logo{width:120px;height:auto;}
-nav ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
-nav a{color:#fff;text-decoration:none;font-weight:500;}
-nav a:hover{color:#ffd700;}
-.hero{text-align:center;padding:120px 20px;background:linear-gradient(to bottom,#000,#111);}
-.hero h1{font-size:3.5rem;margin-bottom:.5rem;letter-spacing:2px;}
-.slogan{font-size:1.2rem;color:#ccc;}
-.division{padding:80px 40px;text-align:center;}
-.about-section{padding:80px 40px;}
-.team-member{display:flex;align-items:center;justify-content:center;margin:40px 0;gap:40px;flex-wrap:wrap;}
-.team-member img{width:320px;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 10px rgba(255,215,0,0.3);}
-.bio{max-width:500px;}
-.bio h3{margin-bottom:10px;color:#ffd700;}
-.contact-section{text-align:center;padding:80px 40px;background:#111;}
-footer{text-align:center;padding:20px;border-top:1px solid #333;background:#000;}
-footer .badges{margin-top:10px;font-size:.9rem;color:#aaa;}
-</style></head><body>
-<header class="main-header"><img src="/assets/images/logo.png" alt="DreamKeepers Logo" class="logo"/><nav><ul><li><a href="#home">Home</a></li><li><a href="#media">DK Media Group</a></li><li><a href="#tech">DK Tech</a></li><li><a href="#about">About Us</a></li><li><a href="#contact">Contact</a></li></ul></nav></header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Keepers — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color .3s;
+    }
+    nav a:hover {
+      color: #555;
+    }
+    .hero {
+      height: 80vh;
+      background: linear-gradient(to right, #f0f0f0, #ffffff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin: 0;
+      color: #111;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin: 10px 0;
+      color: #444;
+    }
+    .button {
+      background: #444;
+      color: #fff;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 25px;
+      transition: background .3s;
+    }
+    .button:hover {
+      background: #000;
+    }
+    .team-section {
+      padding: 80px 0;
+      text-align: center;
+      background: #fafafa;
+    }
+    .team-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      margin-bottom: 40px;
+      color: #222;
+    }
+    .team-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+    .team-member {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 320px;
+      transition: transform .3s, box-shadow .3s;
+      text-align: center;
+    }
+    .team-member:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .team-member img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .team-member h3 {
+      margin: 15px 0 5px;
+      font-family: 'Playfair Display', serif;
+      color: #111;
+    }
+    .team-member p {
+      margin: 0 0 20px;
+      font-size: 0.95em;
+      color: #555;
+    }
+    footer {
+      background: #eaeaea;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
 
-<section id="home" class="hero"><h1>DreamKeepers</h1><p class="slogan">Don’t ever stop dreaming; make your dreams a reality.</p></section>
+  <header>
+    <img src="assets/images/logo.png" alt="Dream Keepers Logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dk-media.html">DK Media Group</a>
+      <a href="dk-tech.html">DK Tech</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<section id="media" class="division"><h2>DK Media Group</h2><p>Producing world-class visuals, storytelling, and branded content through innovation and creativity.</p><div class="gallery-placeholder">[Media gallery coming soon]</div></section>
+  <section class="hero">
+    <h1>Welcome to Dream Keepers</h1>
+    <p>Don’t ever stop dreaming; make your dreams a reality.</p>
+    <button class="button" onclick="window.location.href='about.html'">Meet the Team</button>
+  </section>
 
-<section id="tech" class="division"><h2>DK Tech</h2><p>Building the future of AI, automation, and creative tools through precision-engineered software and hardware.</p><div class="gallery-placeholder">[Tech projects coming soon]</div></section>
+  <section class="team-section">
+    <h2>Our Team</h2>
+    <div class="team-container">
 
-<section id="about" class="about-section"><h2>About Us</h2>
+      <div class="team-member">
+        <img src="assets/images/team/dk.jpg" alt="Deaundrey DK Krueger">
+        <h3>Deaundrey DK Krueger</h3>
+        <p>Founder & Visionary</p>
+      </div>
 
-<div class="team-member"><img src="/assets/images/team/dk.jpg" alt="Deaundrey DK Krueger"/><div class="bio"><h3>Deaundrey “DK” Krueger</h3><p>Founder & Visionary. Leading the charge on AI-human integration, creative innovation, and the DreamKeepers mission.</p></div></div>
+      <div class="team-member">
+        <img src="assets/images/team/steve.jpg" alt="Steve Cartwright">
+        <h3>Steve Cartwright</h3>
+        <p>Co-Developer & Media Director</p>
+      </div>
 
-<div class="team-member"><img src="/assets/images/team/steve.jpg" alt="Steve Cartwright"/><div class="bio"><h3>Steve Cartwright</h3><p>Creative Director. Overseeing production, media design, and project execution across DK Media Group.</p></div></div>
+      <div class="team-member">
+        <img src="assets/images/team/matt.jpg" alt="Matthew Hartzell">
+        <h3>Matthew Hartzell</h3>
+        <p>Lead Developer</p>
+      </div>
 
-<div class="team-member"><img src="/assets/images/team/matt.jpg" alt="Matthew Hartzell"/><div class="bio"><h3>Matthew Hartzell</h3><p>Lead Developer. Driving the code implementation and AI development powering M-Hart 1.0 and DK Tech systems.</p></div></div>
+    </div>
+  </section>
 
-</section>
+  <footer>
+    <p>© 2025 Dream Keepers — All Rights Reserved.</p>
+  </footer>
 
-<section id="contact" class="contact-section"><h2>Contact Us</h2><p>For business and media inquiries, reach out to us at:</p><p><strong>Phone:</strong> 256-348-8821</p><p><strong>Email:</strong> contact@dreamkeepers.net</p></section>
-
-<footer><p>© 2025 DreamKeepers. All Rights Reserved.</p><div class="badges"><span>🔒 Secure Site</span> <span>✅ Verified by DK Media Group</span></div></footer>
-</body></html>
-
+</body>
+</html>
