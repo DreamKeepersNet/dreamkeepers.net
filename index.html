@@ -1,176 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dream Keepers — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
-    header {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header img {
-      height: 50px;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color .3s;
-    }
-    nav a:hover {
-      color: #555;
-    }
-    .hero {
-      height: 80vh;
-      background: linear-gradient(to right, #f0f0f0, #ffffff);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3em;
-      margin: 0;
-      color: #111;
-    }
-    .hero p {
-      font-size: 1.2em;
-      margin: 10px 0;
-      color: #444;
-    }
-    .button {
-      background: #444;
-      color: #fff;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1em;
-      margin-top: 25px;
-      transition: background .3s;
-    }
-    .button:hover {
-      background: #000;
-    }
-    .team-section {
-      padding: 80px 0;
-      text-align: center;
-      background: #fafafa;
-    }
-    .team-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2em;
-      margin-bottom: 40px;
-      color: #222;
-    }
-    .team-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-    }
-    .team-member {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 320px;
-      transition: transform .3s, box-shadow .3s;
-      text-align: center;
-    }
-    .team-member:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .team-member img {
-      width: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    .team-member h3 {
-      margin: 15px 0 5px;
-      font-family: 'Playfair Display', serif;
-      color: #111;
-    }
-    .team-member p {
-      margin: 0 0 20px;
-      font-size: 0.95em;
-      color: #555;
-    }
-    footer {
-      background: #eaeaea;
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 80px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dream Keepers — Awake. Creating what others only dream.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-
-  <header>
-    <img src="assets/images/logo.png" alt="Dream Keepers Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="dk-media.html">DK Media Group</a>
-      <a href="dk-tech.html">DK Tech</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Welcome to Dream Keepers</h1>
-    <p>Don’t ever stop dreaming; make your dreams a reality.</p>
-    <button class="button" onclick="window.location.href='about.html'">Meet the Team</button>
-  </section>
-
-  <section class="team-section">
-    <h2>Our Team</h2>
-    <div class="team-container">
-
-      <div class="team-member">
-        <img src="assets/images/team/dk.jpg" alt="Deaundrey DK Krueger">
-        <h3>Deaundrey DK Krueger</h3>
-        <p>Founder & Visionary</p>
-      </div>
-
-      <div class="team-member">
-        <img src="assets/images/team/steve.jpg" alt="Steve Cartwright">
-        <h3>Steve Cartwright</h3>
-        <p>Co-Developer & Media Director</p>
-      </div>
-
-      <div class="team-member">
-        <img src="assets/images/team/matt.jpg" alt="Matthew Hartzell">
-        <h3>Matthew Hartzell</h3>
-        <p>Lead Developer</p>
-      </div>
-
+  <!-- ================= HEADER / HERO ================= -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 class="logo">Dream Keepers</h1>
+      <p class="motto">While people are asleep dreaming, Dream Keepers are awake creating their dreams.</p>
+      <p class="tagline">Awake. Creating what others only dream.</p>
+      <a href="#about" class="btn-enter">Enter Site</a>
     </div>
-  </section>
+  </
 
-  <footer>
-    <p>© 2025 Dream Keepers — All Rights Reserved.</p>
-  </footer>
-
-</body>
-</html>
