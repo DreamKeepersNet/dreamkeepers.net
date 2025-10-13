@@ -1,70 +1,43 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dream Keepers — Home</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>DreamKeepers — Home</title><link rel="icon" href="/assets/images/logo.png"/><style>
+body{margin:0;font-family:'Poppins',sans-serif;background-color:#000;color:#fff;line-height:1.6;scroll-behavior:smooth;}
+header{display:flex;justify-content:space-between;align-items:center;background:#000;padding:10px 30px;position:sticky;top:0;z-index:100;}
+.logo{width:120px;height:auto;}
+nav ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
+nav a{color:#fff;text-decoration:none;font-weight:500;}
+nav a:hover{color:#ffd700;}
+.hero{text-align:center;padding:120px 20px;background:linear-gradient(to bottom,#000,#111);}
+.hero h1{font-size:3.5rem;margin-bottom:.5rem;letter-spacing:2px;}
+.slogan{font-size:1.2rem;color:#ccc;}
+.division{padding:80px 40px;text-align:center;}
+.about-section{padding:80px 40px;}
+.team-member{display:flex;align-items:center;justify-content:center;margin:40px 0;gap:40px;flex-wrap:wrap;}
+.team-member img{width:320px;height:180px;object-fit:cover;border-radius:12px;box-shadow:0 4px 10px rgba(255,215,0,0.3);}
+.bio{max-width:500px;}
+.bio h3{margin-bottom:10px;color:#ffd700;}
+.contact-section{text-align:center;padding:80px 40px;background:#111;}
+footer{text-align:center;padding:20px;border-top:1px solid #333;background:#000;}
+footer .badges{margin-top:10px;font-size:.9rem;color:#aaa;}
+</style></head><body>
+<header class="main-header"><img src="/assets/images/logo.png" alt="DreamKeepers Logo" class="logo"/><nav><ul><li><a href="#home">Home</a></li><li><a href="#media">DK Media Group</a></li><li><a href="#tech">DK Tech</a></li><li><a href="#about">About Us</a></li><li><a href="#contact">Contact</a></li></ul></nav></header>
 
-  <!-- SEO -->
-  <meta name="description" content="Dream Keepers builds dreams into reality through creativity, film, and technology.">
-  <meta name="keywords" content="Dream Keepers, DK Media Group, DK Tech, film, AI, innovation, creativity, technology">
-  <meta name="author" content="Dream Keepers">
+<section id="home" class="hero"><h1>DreamKeepers</h1><p class="slogan">Don’t ever stop dreaming; make your dreams a reality.</p></section>
 
-  <!-- Open Graph (social preview) -->
-  <meta property="og:title" content="Dream Keepers — Where Dreams Become Reality">
-  <meta property="og:description" content="When the world sleeps, Dream Keepers create.">
-  <meta property="og:image" content="https://dreamkeepers.net/images/preview.jpg">
-  <meta property="og:url" content="https://dreamkeepers.net">
-  <meta property="og:type" content="website">
+<section id="media" class="division"><h2>DK Media Group</h2><p>Producing world-class visuals, storytelling, and branded content through innovation and creativity.</p><div class="gallery-placeholder">[Media gallery coming soon]</div></section>
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<section id="tech" class="division"><h2>DK Tech</h2><p>Building the future of AI, automation, and creative tools through precision-engineered software and hardware.</p><div class="gallery-placeholder">[Tech projects coming soon]</div></section>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+<section id="about" class="about-section"><h2>About Us</h2>
 
-  <!-- Optional Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-</head>
+<div class="team-member"><img src="/assets/images/team/dk.jpg" alt="Deaundrey DK Krueger"/><div class="bio"><h3>Deaundrey “DK” Krueger</h3><p>Founder & Visionary. Leading the charge on AI-human integration, creative innovation, and the DreamKeepers mission.</p></div></div>
 
-<body>
-  <header>
-    <img src="images/logo.png" alt="Dream Keepers Logo" class="logo">
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="gallery.html">Media Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<div class="team-member"><img src="/assets/images/team/steve.jpg" alt="Steve Cartwright"/><div class="bio"><h3>Steve Cartwright</h3><p>Creative Director. Overseeing production, media design, and project execution across DK Media Group.</p></div></div>
 
-  <main>
-    <section class="hero">
-      <img src="images/logo.png" alt="Dream Keepers Logo" class="hero-logo">
-      <h1>When the world sleeps, Dream Keepers create.</h1>
-      <p>Building dreams into reality through creativity and technology.</p>
-    </section>
+<div class="team-member"><img src="/assets/images/team/matt.jpg" alt="Matthew Hartzell"/><div class="bio"><h3>Matthew Hartzell</h3><p>Lead Developer. Driving the code implementation and AI development powering M-Hart 1.0 and DK Tech systems.</p></div></div>
 
-    <section class="divisions">
-      <h2>Our Divisions</h2>
-      <div class="division-grid">
-        <div class="division">
-          <h3>DK Media Group</h3>
-          <p>Professional media production, sound, and film innovation.</p>
-        </div>
-        <div class="division">
-          <h3>DK Tech</h3>
-          <p>Software, AI, and next-gen human-machine development.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+</section>
 
-  <footer>
-    <img src="images/logo.png" alt="Dream Keepers Logo" class="footer-logo">
-    <p>© 2025 Dream Keepers — DK Media Group LLC</p>
-  </footer>
-</body>
-</html>
+<section id="contact" class="contact-section"><h2>Contact Us</h2><p>For business and media inquiries, reach out to us at:</p><p><strong>Phone:</strong> 256-348-8821</p><p><strong>Email:</strong> contact@dreamkeepers.net</p></section>
+
+<footer><p>© 2025 DreamKeepers. All Rights Reserved.</p><div class="badges"><span>🔒 Secure Site</span> <span>✅ Verified by DK Media Group</span></div></footer>
+</body></html>
+
