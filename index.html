@@ -1,190 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DreamKeepers — DK Media Group</title>
-
 <style>
-/* ========== GLOBAL STYLE ========== */
-html,body{
-  margin:0;
-  padding:0;
-  font-family:"Poppins",sans-serif;
-  color:#fff;
-  scroll-behavior:smooth;
-  background:url("images/IMG_2770.JPG") no-repeat center center fixed;
-  background-size:cover;
-}
-
-/* NAVIGATION */
-header{
-  position:fixed;
-  top:0;left:0;width:100%;
-  background:rgba(0,0,0,0.6);
-  z-index:10;
-}
-nav ul{
-  list-style:none;
-  margin:0;padding:15px 0;
-  display:flex;
-  justify-content:center;
-  gap:40px;
-}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  transition:color .3s;
-}
-nav a:hover,nav a.active{color:#00eaff;}
-
-/* GENERAL SECTION STYLE */
-section{
-  min-height:100vh;
-  padding:120px 20px 60px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background-color:rgba(0,0,0,0.6);
-}
-#home{background-color:rgba(0,0,0,0.7);}
-#about{background-color:rgba(20,20,20,0.7);}
-#media{background-color:rgba(15,45,70,0.7);}
-#tech{background-color:rgba(40,15,70,0.7);}
-
-/* NEON TITLE */
-.neon{
-  font-size:4rem;
-  text-shadow:0 0 10px #00eaff,0 0 20px #00eaff,0 0 40px #00eaff;
-  animation:flicker 2s infinite alternate;
-}
-@keyframes flicker{
-  from{opacity:1;}
-  50%{opacity:0.85;}
-  to{opacity:1;}
-}
-.slogan{
-  font-size:1.2rem;
-  color:#ccc;
-  margin-top:1rem;
-}
-
-/* PAGE TITLES */
-.page-title{
-  font-size:2.5rem;
-  text-shadow:0 0 10px #00eaff;
-  margin-bottom:40px;
-}
-
-/* BIO SECTION */
-.bio-gallery{
-  display:flex;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  gap:40px;
-  justify-content:center;
-  padding-bottom:30px;
-}
-.bio{
-  flex:0 0 auto;
-  width:220px;
-}
-.bio img{
-  width:200px;
-  border:3px solid gray;
-  border-radius:10px;
-  transition:transform .3s;
-}
-.bio img:hover{transform:scale(1.05);}
-.bio p{
-  margin-top:10px;
-  font-size:0.9rem;
-}
-
-/* GALLERIES */
-.gallery{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  justify-content:center;
-}
-.gallery-item{
-  background:rgba(255,255,255,0.1);
-  padding:30px;
-  border-radius:8px;
-  width:250px;
-  font-weight:500;
-}
-
-/* SCROLLBAR HIDE (for bio row) */
-.bio-gallery::-webkit-scrollbar{display:none;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background-color:#000;color:#fff;overflow-x:hidden}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;
+background:url('images/IMG_2770.JPG') center/cover no-repeat;
+opacity:0.08;z-index:-1}
+header{text-align:center;padding:2rem 1rem;background:rgba(0,0,0,0.7)}
+nav{display:flex;justify-content:center;gap:2rem;margin-top:1rem}
+nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:1.1rem;transition:color .3s}
+nav a:hover{color:#aaa}
+.title{font-size:3rem;font-weight:bold;letter-spacing:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:90%;margin:auto}
+.subtitle{font-size:1.2rem;color:#aaa;margin-top:.5rem}
+section{padding:4rem 2rem;text-align:center}
+.bio-container{display:flex;justify-content:center;align-items:flex-start;flex-wrap:nowrap;gap:2rem;overflow-x:auto;margin-top:2rem}
+.bio{border:2px solid #555;border-radius:10px;padding:1rem;width:220px;background-color:rgba(0,0,0,0.6)}
+.bio img{width:100%;height:auto;border-radius:8px;margin-bottom:1rem}
+.bio h3{color:#fff;margin-bottom:.5rem}
+.bio p{color:#aaa;font-size:.9rem}
+footer{text-align:center;padding:1.5rem 0;color:#555;font-size:.8rem;border-top:1px solid #222;margin-top:4rem}
+.hidden{display:none}
 </style>
+<script>
+function showPage(page){
+ document.querySelectorAll("section").forEach(sec=>sec.classList.add("hidden"));
+ document.getElementById(page).classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+</script>
 </head>
-
 <body>
-
+<div class="bg"></div>
 <header>
+  <h1 class="title">DreamKeepers</h1>
+  <p class="subtitle">When the world sleeps, Dream Keepers create.</p>
   <nav>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#media">DK Media Group</a></li>
-      <li><a href="#tech">DK Tech</a></li>
-    </ul>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('dkmedia')">DK Media Group</a>
+    <a href="#" onclick="showPage('dktech')">DK Tech</a>
   </nav>
 </header>
 
-<!-- HOME -->
 <section id="home">
-  <h1 class="neon">DreamKeepers</h1>
-  <p class="slogan">Don't ever stop dreaming; make your dreams a reality.</p>
+  <h2>Welcome to DreamKeepers</h2>
+  <p style="margin-top:1rem;color:#aaa">
+    Explore our divisions, meet our team, and see what drives our vision.
+  </p>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h1 class="page-title">Meet the DreamKeepers Team</h1>
-  <div class="bio-gallery">
+<section id="about" class="hidden">
+  <h2>Meet the DreamKeepers Team</h2>
+  <div class="bio-container">
     <div class="bio">
-      <img src="images/IMG_2545.JPG" alt="Deaundrey DK Krueger" />
-      <p><strong>Deaundrey DK Krueger</strong><br>Founder and Visionary of DK Media Group LLC. Specialist in AI software and hardware development.</p>
+      <img src="images/IMG_2545.JPG" alt="Deaundrey DK Krueger">
+      <h3>Deaundrey “DK” Krueger</h3>
+      <p>Founder and visionary of DK Media Group LLC. Specialist in AI software and hardware development.</p>
     </div>
     <div class="bio">
-      <img src="images/IMG_2555.JPG" alt="Matthew Hartzell" />
-      <p><strong>Matthew Hartzell</strong><br>Vice President and CFO of DK Media Group and DK Tech.</p>
+      <img src="images/IMG_2555.JPG" alt="Matthew Hartle">
+      <h3>Matthew Hartle</h3>
+      <p>Vice President and CFO of DK Media Group and DK Tech.</p>
     </div>
     <div class="bio">
-      <img src="images/IMG_2619.JPG" alt="Kenneth Miles" />
-      <p><strong>Kenneth Miles</strong><br>Vice President of Security Operations, ensuring system integrity and internal protection protocols.</p>
+      <img src="images/IMG_2619.JPG" alt="Kenneth Miles">
+      <h3>Kenneth Miles</h3>
+      <p>VP of Security Operations for DK Media Group.</p>
     </div>
     <div class="bio">
-      <img src="images/IMG_2799.JPG" alt="Stephen Cartwright" />
-      <p><strong>Stephen Cartwright</strong><br>Production Manager and Events Coordinator. Oversees event logistics and team operations for DK Media Group.</p>
+      <img src="images/IMG_2799.JPG" alt="Stephen Cartwright">
+      <h3>Stephen Cartwright</h3>
+      <p>Production Manager and Events Coordinator for DK Media Group.</p>
     </div>
   </div>
 </section>
 
-<!-- MEDIA -->
-<section id="media">
-  <h1 class="page-title">DK Media Group</h1>
-  <p>Explore our photo and video productions.</p>
-  <div class="gallery">
-    <div class="gallery-item">Photo Gallery Coming Soon</div>
-    <div class="gallery-item">Video Showcase Coming Soon</div>
-  </div>
+<section id="dkmedia" class="hidden">
+  <h2>DK Media Group</h2>
+  <p style="color:#aaa">Media production, design, and creative innovation that connect audiences and ideas.</p>
 </section>
 
-<!-- TECH -->
-<section id="tech">
-  <h1 class="page-title">DK Tech Division</h1>
-  <p>Innovations in AI, hardware, and integrated systems.</p>
-  <div class="gallery">
-    <div class="gallery-item">Project Gallery Coming Soon</div>
-    <div class="gallery-item">Technology Demos Coming Soon</div>
-  </div>
+<section id="dktech" class="hidden">
+  <h2>DK Tech</h2>
+  <p style="color:#aaa">Advancing technology and AI development for a smarter future.</p>
 </section>
 
+<footer>
+  <p>© 2025 DreamKeepers — DK Media Group LLC. All Rights Reserved.</p>
+</footer>
 </body>
 </html>
