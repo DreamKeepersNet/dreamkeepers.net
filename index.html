@@ -1,169 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dream Keepers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Keepers — Official Site</title>
   <style>
-    body {
+    /* ==== GLOBAL STYLES ==== */
+    * {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #0b0b0b; /* charcoal base */
-      color: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #222;
       line-height: 1.6;
     }
+    a { color: #0077ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ==== HEADER ==== */
     header {
+      background-color: #111;
+      color: #fff;
       padding: 40px 20px;
       text-align: center;
-      /* you can add a logo image here */
+    }
+    header img {
+      width: 100px;
+      margin-bottom: 15px;
     }
     header h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
       margin-bottom: 10px;
     }
     header p {
-      font-size: 1.3rem;
-      color: #cccccc;
-      margin-bottom: 30px;
+      font-style: italic;
+      color: #ccc;
+      font-size: 1.1rem;
     }
+
+    /* ==== NAVIGATION ==== */
     nav {
-      background-color: #111;
-      padding: 10px 20px;
-      text-align: center;
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
     }
     nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      font-size: 1rem;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
     }
     nav a:hover {
-      color: #d4af37; /* gold accent */
+      color: #00aaff;
     }
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
+
+    /* ==== MAIN CONTENT ==== */
+    main {
+      max-width: 1100px;
+      margin: 50px auto;
       padding: 0 20px;
     }
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
+
+    section {
+      margin-bottom: 50px;
     }
-    .hero h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: #d4af37; /* gold accent for section heading */
-      margin-bottom: 20px;
+    section h2 {
+      border-left: 5px solid #0077ff;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      color: #111;
     }
-    .division-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-    }
-    .division-box {
-      background-color: #1b1b1b;
-      border: 1px solid #333;
-      padding: 30px;
-      border-radius: 12px;
-    }
-    .division-box h3 {
-      color: #d4af37;
+    section p, section ul {
       margin-bottom: 15px;
     }
+
+    ul { list-style: none; }
+    li { margin-bottom: 8px; }
+
+    /* ==== TEAM ==== */
     .team-member {
-      background-color: #1b1b1b;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 30px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f8f8f8;
+      transition: transform 0.2s;
+    }
+    .team-member:hover {
+      transform: translateY(-3px);
     }
     .team-member h3 {
-      color: #d4af37;
-      margin-bottom: 10px;
+      color: #0077ff;
+      margin-bottom: 5px;
     }
+
+    /* ==== FOOTER ==== */
     footer {
       background-color: #111;
-      color: #888;
+      color: #ccc;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
+      padding: 20px;
       font-size: 0.9rem;
+    }
+    footer img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    /* ==== RESPONSIVE ==== */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      nav { flex-wrap: wrap; gap: 15px; }
     }
   </style>
 </head>
 <body>
 
   <header>
+    <img src="images/logo.png" alt="Dream Keepers Logo">
     <h1>Dream Keepers</h1>
-    <p>Awake. Creating what others only dream.</p>
+    <p>While people are asleep dreaming, Dream Keepers are awake creating their dreams.</p>
   </header>
 
   <nav>
-    <a href="home.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="gallery.html">Media Gallery</a>
-    <a href="contact.html">Contact</a>
+    <a href="#overview">Overview</a>
+    <a href="#divisions">Divisions</a>
+    <a href="#team">Team</a>
+    <a href="#projects">Projects</a>
+    <a href="#infrastructure">Infrastructure</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <section class="hero">
-    <h2>Our Divisions</h2>
-    <div class="division-grid">
-      <div class="division-box">
-        <h3>DK Media Group, LLC</h3>
-        <p>Media production, brand design, and digital content creation. Lead: Stephen Cartwright.</p>
-      </div>
-      <div class="division-box">
-        <h3>DK Tech</h3>
-        <p>Software engineering, AI research, and technological infrastructure. Lead: Deaundrey “DK” Krueger.</p>
-      </div>
-      <div class="division-box">
-        <h3>M-Hart 1.0 Project</h3>
-        <p>AI-driven communication app connecting humans and machines. Lead: DK Krueger & Matthew Hartzell.</p>
-      </div>
-      <div class="division-box">
-        <h3>DK AI Initiative</h3>
-        <p>Development of cognitive artificial intelligence for human-AI coexistence. Lead: DK Krueger.</p>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section id="overview">
+      <h2>Company Overview</h2>
+      <p><strong>Founded:</strong> May 2016</p>
+      <p><strong>Founder & CEO:</strong> Deaundrey “DK” Krueger</p>
+      <p><strong>Vice President:</strong> Matthew Hartzell</p>
+      <p><strong>Mission:</strong> Dream Keepers merges human creativity and artificial intelligence to advance innovation in media, technology, and interplanetary development.</p>
+    </section>
 
-  <section>
-    <h2>Our Team</h2>
-    <div class="team-member">
-      <h3>Deaundrey “DK” Krueger</h3>
-      <p>Founder & CEO — Innovator, developer, and visionary leader driving the evolution of AI and media integration under Dream Keepers.</p>
-    </div>
-    <div class="team-member">
-      <h3>Matthew Hartzell</h3>
-      <p>Vice President & Co-Programmer — Lead engineer and co-developer of M-Hart 1.0, managing app architecture and AI functionality.</p>
-    </div>
-    <div class="team-member">
-      <h3>Stephen Cartwright</h3>
-      <p>Head of Media & Client Accounts — Oversees production, editing, and client media for DK Media Group.</p>
-    </div>
-    <div class="team-member">
-      <h3>Kenneth Miles</h3>
-      <p>Head of Security — Leads the safety and integrity of all company operations.</p>
-    </div>
-  </section>
+    <section id="divisions">
+      <h2>Our Divisions</h2>
+      <ul>
+        <li><strong>DK Media Group, LLC</strong> – Media production, brand design, and digital content creation. <em>Lead:</em> Stephen Cartwright</li>
+        <li><strong>DK Tech</strong> – Software engineering, AI research, and technological infrastructure. <em>Lead:</em> Deaundrey “DK” Krueger</li>
+        <li><strong>M-Hart 1.0 Project</strong> – AI-driven communication app connecting humans and machines. <em>Lead:</em> Deaundrey “DK” Krueger & Matthew Hartzell</li>
+        <li><strong>DK AI Initiative</strong> – Development of cognitive artificial intelligence for human-AI coexistence. <em>Lead:</em> Deaundrey “DK” Krueger</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Flagship Projects</h2>
-    <ul>
-      <li><strong>M-Hart 1.0</strong> — Advanced AI-powered assistant app bringing DK AI tech to consumers.</li>
-      <li><strong>DK AI Framework</strong> — Core intelligence that unites all Dream Keepers operations for adaptive collaboration.</li>
-    </ul>
-  </section>
+    <section id="team">
+      <h2>Our Team</h2>
+      <div class="team-member">
+        <h3>Deaundrey “DK” Krueger</h3>
+        <p><strong>Founder & CEO</strong></p>
+        <p>Innovator, developer, and visionary leader driving the evolution of AI and media integration under Dream Keepers.</p>
+      </div>
+      <div class="team-member">
+        <h3>Matthew Hartzell</h3>
+        <p><strong>Vice President & Co-Programmer</strong></p>
+        <p>Lead engineer and co-developer of M-Hart 1.0, managing app architecture and AI functionality.</p>
+      </div>
+      <div class="team-member">
+        <h3>Stephen Cartwright</h3>
+        <p><strong>Head of Media & Client Accounts</strong></p>
+        <p>Oversees production, editing, and client media for DK Media Group.</p>
+      </div>
+      <div class="team-member">
+        <h3>Kenneth Miles</h3>
+        <p><strong>Head of Security</strong></p>
+        <p>Leads overall security operations for Dream Keepers, overseeing the safety and integrity of all company divisions.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Flagship Projects</h2>
+      <ul>
+        <li><strong>M-Hart 1.0</strong> – An advanced AI-powered assistant app developed in Flutter and Android Studio, designed to bring DK AI technology to consumers.</li>
+        <li><strong>DK AI</strong> – The core intelligence framework uniting all Dream Keepers operations, enabling adaptive human-AI collaboration and cognitive learning.</li>
+      </ul>
+      <h3>Technology Integrations</h3>
+      <ul>
+        <li>Neuralink</li>
+        <li>Starlink</li>
+        <li>Quantum Computing Research</li>
+        <li>Advanced Fusion Propulsion Studies</li>
+      </ul>
+    </section>
+
+    <section id="infrastructure">
+      <h2>Infrastructure</h2>
+      <ul>
+        <li><strong>NAS Storage:</strong> Local media storage network for internal projects.</li>
+        <li><strong>Cloud Storage:</strong> Google Drive for client access and shared content.</li>
+        <li><strong>GitHub:</strong> Private repositories for DK Tech and M-Hart 1.0 codebase.</li>
+        <li><strong>Website:</strong> <a href="https://dreamkeepers.net">dreamkeepers.net</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><strong>Company Phone:</strong> 256-348-8821</p>
+      <p><strong>Email:</strong> info@dreamkeepers.net</p>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Dream Keepers. All rights reserved.</p>
+    <img src="images/logo.png" alt="Dream Keepers Logo">
+    <p>© 2025 Dream Keepers — Awake. Creating what others only dream.</p>
   </footer>
 
 </body>
 </html>
+
 
 
 
