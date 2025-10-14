@@ -1,95 +1,170 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dream Keepers</title>
-  <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Reset and layout */
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      width: 100%;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b0b0b; /* charcoal base */
       color: #ffffff;
-      background-color: #0e0e0e;
-      overflow: hidden;
+      line-height: 1.6;
     }
-
-    /* Splash screen container */
-    .splash {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+    header {
+      padding: 40px 20px;
       text-align: center;
-      background: url('images/logo.png') no-repeat center center/contain;
-      background-color: #000000;
-      background-size: 40%;
+      /* you can add a logo image here */
     }
-
-    .splash-content {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem 3rem;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      font-weight: 300;
+    header p {
+      font-size: 1.3rem;
       color: #cccccc;
+      margin-bottom: 30px;
     }
-
-    .enter-btn {
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      background-color: #ffffff;
-      color: #000000;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    nav {
+      background-color: #111;
+      padding: 10px 20px;
+      text-align: center;
     }
-
-    .enter-btn:hover {
-      background-color: #1a1a1a;
+    nav a {
       color: #ffffff;
-      border: 2px solid #ffffff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      color: #d4af37; /* gold accent */
+    }
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #d4af37; /* gold accent for section heading */
+      margin-bottom: 20px;
+    }
+    .division-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    .division-box {
+      background-color: #1b1b1b;
+      border: 1px solid #333;
+      padding: 30px;
+      border-radius: 12px;
+    }
+    .division-box h3 {
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+    .team-member {
+      background-color: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    .team-member h3 {
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #111;
+      color: #888;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
-
 <body>
-  <section class="splash">
-    <div class="splash-content">
-      <h1>Dream Keepers</h1>
-      <p>While people are asleep dreaming, Dream Keepers are awake creating their dreams.</p>
-      <button class="enter-btn" onclick="location.href='home.html'">Enter Site</button>
+
+  <header>
+    <h1>Dream Keepers</h1>
+    <p>Awake. Creating what others only dream.</p>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Media Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Our Divisions</h2>
+    <div class="division-grid">
+      <div class="division-box">
+        <h3>DK Media Group, LLC</h3>
+        <p>Media production, brand design, and digital content creation. Lead: Stephen Cartwright.</p>
+      </div>
+      <div class="division-box">
+        <h3>DK Tech</h3>
+        <p>Software engineering, AI research, and technological infrastructure. Lead: Deaundrey “DK” Krueger.</p>
+      </div>
+      <div class="division-box">
+        <h3>M-Hart 1.0 Project</h3>
+        <p>AI-driven communication app connecting humans and machines. Lead: DK Krueger & Matthew Hartzell.</p>
+      </div>
+      <div class="division-box">
+        <h3>DK AI Initiative</h3>
+        <p>Development of cognitive artificial intelligence for human-AI coexistence. Lead: DK Krueger.</p>
+      </div>
     </div>
   </section>
+
+  <section>
+    <h2>Our Team</h2>
+    <div class="team-member">
+      <h3>Deaundrey “DK” Krueger</h3>
+      <p>Founder & CEO — Innovator, developer, and visionary leader driving the evolution of AI and media integration under Dream Keepers.</p>
+    </div>
+    <div class="team-member">
+      <h3>Matthew Hartzell</h3>
+      <p>Vice President & Co-Programmer — Lead engineer and co-developer of M-Hart 1.0, managing app architecture and AI functionality.</p>
+    </div>
+    <div class="team-member">
+      <h3>Stephen Cartwright</h3>
+      <p>Head of Media & Client Accounts — Oversees production, editing, and client media for DK Media Group.</p>
+    </div>
+    <div class="team-member">
+      <h3>Kenneth Miles</h3>
+      <p>Head of Security — Leads the safety and integrity of all company operations.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Flagship Projects</h2>
+    <ul>
+      <li><strong>M-Hart 1.0</strong> — Advanced AI-powered assistant app bringing DK AI tech to consumers.</li>
+      <li><strong>DK AI Framework</strong> — Core intelligence that unites all Dream Keepers operations for adaptive collaboration.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Dream Keepers. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
+
 
 
 
