@@ -1,226 +1,774 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dream Keepers — Official Site</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream Keepers™ — dreamkeepers.net</title>
+  <meta name="description" content="Dream Keepers — premium media & tech studio.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/logo/dreamkeeperslogo.jpg" type="image/jpeg">
+
   <style>
-    /* ==== GLOBAL STYLES ==== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #ffffff;
-      color: #222;
-      line-height: 1.6;
-    }
-    a { color: #0077ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ==== HEADER ==== */
-    header {
-      background-color: #111;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    header img {
-      width: 100px;
-      margin-bottom: 15px;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-style: italic;
-      color: #ccc;
-      font-size: 1.1rem;
+    /* ====== THEME / VARIABLES ====== */
+    :root{
+      --bg:#071126;
+      --panel:#0c1624;
+      --muted:#9fb0c2;
+      --text:#eef6fb;
+      --gold:#d4af37;
+      --teal:#2fd1c7;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --maxw:1200px;
+      --header-h:72px;
+      --transition-fast:.22s;
+      --transition-med:.42s;
     }
 
-    /* ==== NAVIGATION ==== */
-    nav {
-      background-color: #222;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px;
+    /* ====== RESET / BASE ====== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color:var(--text);
+      background: linear-gradient(180deg,var(--bg), #041022 85%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      overflow-x:hidden;
     }
-    nav a {
-      color: #fff;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00aaff;
-    }
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    .site-wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-    /* ==== MAIN CONTENT ==== */
-    main {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
+    /* ====== HEADER ====== */
+    header.site-header{
+      position:sticky;top:0;left:0;right:0;height:var(--header-h);
+      display:flex;align-items:center;justify-content:space-between;padding:10px 22px;
+      background:linear-gradient(180deg, rgba(6,10,18,0.6), rgba(6,10,18,0.4));
+      border-bottom:1px solid rgba(255,255,255,0.03);z-index:999;
+      backdrop-filter: blur(6px);
     }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+    .brand .title{font-family:'Poppins',Inter,sans-serif;font-weight:600;font-size:18px;line-height:1}
+    nav.main-nav{display:flex;gap:10px;align-items:center}
+    nav.main-nav a{color:var(--muted);padding:8px 12px;border-radius:10px;transition:all var(--transition-fast)}
+    nav.main-nav a:hover, nav.main-nav a.active{background:var(--glass);color:var(--text)}
 
-    section {
-      margin-bottom: 50px;
+    /* ====== PAGE SECTION (each "page") ====== */
+    .page{
+      min-height:calc(100vh - var(--header-h));
+      padding:calc(var(--header-h) + 36px) 16px 64px;
+      transition:opacity var(--transition-med), transform var(--transition-med);
+      position:relative;
+      opacity:0;pointer-events:none;transform:translateY(8px);
     }
-    section h2 {
-      border-left: 5px solid #0077ff;
-      padding-left: 10px;
-      margin-bottom: 15px;
-      color: #111;
-    }
-    section p, section ul {
-      margin-bottom: 15px;
-    }
+    .page.active{opacity:1;pointer-events:auto;transform:none}
 
-    ul { list-style: none; }
-    li { margin-bottom: 8px; }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 30px rgba(2,6,15,0.6)}
+    .hero{display:flex;gap:24px;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+    .hero .left{flex:1}
+    .hero h1{font-family:'Poppins',Inter,sans-serif;font-size:36px;margin:0 0 8px}
+    .lead{color:var(--muted);margin:0 0 12px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#e6c66b);color:#06101a;font-weight:700;border:0;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
-    /* ==== TEAM ==== */
-    .team-member {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background-color: #f8f8f8;
-      transition: transform 0.2s;
-    }
-    .team-member:hover {
-      transform: translateY(-3px);
-    }
-    .team-member h3 {
-      color: #0077ff;
-      margin-bottom: 5px;
-    }
+    /* ====== Team grid ====== */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .team-card{display:flex;gap:14px;align-items:flex-start;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);transition:transform .18s ease,box-shadow .18s}
+    .team-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.55)}
+    .team-card img{width:96px;height:96px;object-fit:cover;border-radius:8px}
 
-    /* ==== FOOTER ==== */
-    footer {
-      background-color: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    footer img {
-      width: 80px;
-      margin-bottom: 10px;
-    }
+    /* ====== Gallery ====== */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+    .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer}
 
-    /* ==== RESPONSIVE ==== */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      nav { flex-wrap: wrap; gap: 15px; }
+    /* ====== Lightbox ====== */
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,15,0.9);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+    .lightbox.show{opacity:1;pointer-events:auto}
+    .lightbox-inner{max-width:1100px;width:100%;position:relative}
+    .lightbox-close{position:absolute;right:8px;top:8px;background:transparent;border:0;color:var(--text);font-size:24px;cursor:pointer}
+    .lightbox-content img, .lightbox-content video{max-width:100%;height:auto;border-radius:8px;display:block;margin:0 auto}
+
+    /* ====== Admin modal (login) ====== */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:1500;padding:20px;background:rgba(1,3,6,0.6);backdrop-filter: blur(6px);opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal.show{opacity:1;pointer-events:auto}
+    .modal-card{width:100%;max-width:560px;background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .form-row{margin-bottom:12px}
+    .input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+
+    /* ====== Dashboard (admin) ====== */
+    .dashboard-grid{display:grid;grid-template-columns:1fr 420px;gap:18px}
+    .upload-box{border:2px dashed rgba(255,255,255,0.04);padding:12px;border-radius:10px;text-align:center}
+    .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+    .preview-grid img{width:100%;height:90px;object-fit:cover;border-radius:8px}
+
+    /* ====== Footer ====== */
+    footer.site-footer{padding:18px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:28px}
+
+    /* ====== UTIL ====== */
+    .hidden{display:none}
+    @media (max-width:900px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .dashboard-grid{grid-template-columns:1fr}
+      .brand img{width:48px;height:48px}
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="images/logo.png" alt="Dream Keepers Logo">
-    <h1>Dream Keepers</h1>
-    <p>While people are asleep dreaming, Dream Keepers are awake creating their dreams.</p>
+  <!-- ====== SITE HEADER (shared) ====== -->
+  <header class="site-header" role="banner">
+    <div class="site-wrap" style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <a href="#home" class="brand-link" data-section="home" aria-label="Dream Keepers Home">
+          <div class="brand">
+            <img src="assets/images/logo/dreamkeeperslogo.jpg" alt="Dream Keepers™ logo" id="mainLogo">
+            <div>
+              <div class="title">Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup></div>
+              <div style="font-size:12px;color:var(--muted)">Awake. Creating what others only dream.</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" data-section="home" class="nav-link active">Home</a>
+        <a href="#about" data-section="about" class="nav-link">About</a>
+        <a href="#dk-media" data-section="dk-media" class="nav-link">DK Media Group</a>
+        <a href="#dk-tech" data-section="dk-tech" class="nav-link">DK Tech</a>
+        <a href="#gallery" data-section="gallery" class="nav-link">Gallery</a>
+        <a href="#contact" data-section="contact" class="nav-link">Contact</a>
+        <a href="#admin" data-section="admin" class="nav-link" id="adminNav">Admin</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#overview">Overview</a>
-    <a href="#divisions">Divisions</a>
-    <a href="#team">Team</a>
-    <a href="#projects">Projects</a>
-    <a href="#infrastructure">Infrastructure</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
+  <!-- ====== PAGES (all in one file) ====== -->
   <main>
-    <section id="overview">
-      <h2>Company Overview</h2>
-      <p><strong>Founded:</strong> May 2016</p>
-      <p><strong>Founder & CEO:</strong> Deaundrey “DK” Krueger</p>
-      <p><strong>Vice President:</strong> Matthew Hartzell</p>
-      <p><strong>Mission:</strong> Dream Keepers merges human creativity and artificial intelligence to advance innovation in media, technology, and interplanetary development.</p>
-    </section>
 
-    <section id="divisions">
-      <h2>Our Divisions</h2>
-      <ul>
-        <li><strong>DK Media Group, LLC</strong> – Media production, brand design, and digital content creation. <em>Lead:</em> Stephen Cartwright</li>
-        <li><strong>DK Tech</strong> – Software engineering, AI research, and technological infrastructure. <em>Lead:</em> Deaundrey “DK” Krueger</li>
-        <li><strong>M-Hart 1.0 Project</strong> – AI-driven communication app connecting humans and machines. <em>Lead:</em> Deaundrey “DK” Krueger & Matthew Hartzell</li>
-        <li><strong>DK AI Initiative</strong> – Development of cognitive artificial intelligence for human-AI coexistence. <em>Lead:</em> Deaundrey “DK” Krueger</li>
-      </ul>
-    </section>
+    <!-- HOME -->
+    <section id="home" class="page active" role="region" aria-labelledby="homeHeading">
+      <div class="site-wrap">
+        <div class="hero card">
+          <div class="left">
+            <h1 id="homeHeading">Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup></h1>
+            <p class="lead">We merge creative storytelling and advanced technology to launch ideas into the world.</p>
+            <p>
+              <button class="btn" data-section="dk-media">Explore DK Media</button>
+              <button class="btn ghost" data-section="dk-tech" style="margin-left:12px">Explore DK Tech</button>
+            </p>
+          </div>
+          <div style="width:320px;max-width:40%">
+            <img src="assets/images/logo/dreamkeeperslogo.jpg" alt="Dream Keepers logo" style="border-radius:12px;box-shadow:0 12px 30px rgba(2,6,15,0.6)">
+          </div>
+        </div>
 
-    <section id="team">
-      <h2>Our Team</h2>
-      <div class="team-member">
-        <h3>Deaundrey “DK” Krueger</h3>
-        <p><strong>Founder & CEO</strong></p>
-        <p>Innovator, developer, and visionary leader driving the evolution of AI and media integration under Dream Keepers.</p>
-      </div>
-      <div class="team-member">
-        <h3>Matthew Hartzell</h3>
-        <p><strong>Vice President & Co-Programmer</strong></p>
-        <p>Lead engineer and co-developer of M-Hart 1.0, managing app architecture and AI functionality.</p>
-      </div>
-      <div class="team-member">
-        <h3>Stephen Cartwright</h3>
-        <p><strong>Head of Media & Client Accounts</strong></p>
-        <p>Oversees production, editing, and client media for DK Media Group.</p>
-      </div>
-      <div class="team-member">
-        <h3>Kenneth Miles</h3>
-        <p><strong>Head of Security</strong></p>
-        <p>Leads overall security operations for Dream Keepers, overseeing the safety and integrity of all company divisions.</p>
+        <section style="margin-top:20px" class="card">
+          <h3 style="color:var(--gold)">Featured Projects</h3>
+          <p style="color:var(--muted)">A showcase of work, films, and tech — scroll or use the menu to explore.</p>
+        </section>
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Flagship Projects</h2>
-      <ul>
-        <li><strong>M-Hart 1.0</strong> – An advanced AI-powered assistant app developed in Flutter and Android Studio, designed to bring DK AI technology to consumers.</li>
-        <li><strong>DK AI</strong> – The core intelligence framework uniting all Dream Keepers operations, enabling adaptive human-AI collaboration and cognitive learning.</li>
-      </ul>
-      <h3>Technology Integrations</h3>
-      <ul>
-        <li>Neuralink</li>
-        <li>Starlink</li>
-        <li>Quantum Computing Research</li>
-        <li>Advanced Fusion Propulsion Studies</li>
-      </ul>
+    <!-- ABOUT -->
+    <section id="about" class="page" role="region" aria-labelledby="aboutHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <h2 id="aboutHeading">About Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup></h2>
+          <p class="lead" style="color:var(--muted)">We blend creative storytelling with technical craftsmanship to launch ideas into the world. Founded May 2016.</p>
+          <div style="margin-top:18px">
+            <div class="card">
+              <h3>Mission</h3>
+              <p>To build meaningful media and resilient technology that empower creators and innovators.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <h3>Team</h3>
+            <div class="team-grid">
+              <div class="team-card">
+                <img src="assets/images/team/Deaundrey_DK_Krueger.jpg" alt="Deaundrey DK Krueger">
+                <div>
+                  <strong>Deaundrey "DK" Krueger</strong>
+                  <div style="color:var(--gold);font-weight:600">Founder &amp; CEO</div>
+                  <p style="color:var(--muted)">Lead developer, media producer, and the visionary behind DK AI integration and M-Hart 1.0.</p>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/images/team/Matthew_Hartzell.jpg" alt="Matthew Hartzell">
+                <div>
+                  <strong>Matthew Hartzell</strong>
+                  <div style="color:var(--gold);font-weight:600">Vice President &amp; Co-Programmer</div>
+                  <p style="color:var(--muted)">Engineer, co-developer of M-Hart 1.0; focused on architecture and R&D.</p>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/images/team/Stephen_Cartwright.jpg" alt="Stephen Cartwright">
+                <div>
+                  <strong>Stephen Cartwright</strong>
+                  <div style="color:var(--gold);font-weight:600">Head of Media &amp; Client Accounts</div>
+                  <p style="color:var(--muted)">Oversees production, editing, and client workstreams.</p>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/images/team/Kenneth_Miles.jpg" alt="Kenneth Miles">
+                <div>
+                  <strong>Kenneth Miles</strong>
+                  <div style="color:var(--gold);font-weight:600">Head of Security</div>
+                  <p style="color:var(--muted)">Responsible for safety and integrity across company systems.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section id="infrastructure">
-      <h2>Infrastructure</h2>
-      <ul>
-        <li><strong>NAS Storage:</strong> Local media storage network for internal projects.</li>
-        <li><strong>Cloud Storage:</strong> Google Drive for client access and shared content.</li>
-        <li><strong>GitHub:</strong> Private repositories for DK Tech and M-Hart 1.0 codebase.</li>
-        <li><strong>Website:</strong> <a href="https://dreamkeepers.net">dreamkeepers.net</a></li>
-      </ul>
+    <!-- DK MEDIA -->
+    <section id="dk-media" class="page" role="region" aria-labelledby="mediaHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="assets/images/logo/dreamkeeperslogo-small.jpg" alt="DK Media logo" style="width:80px;border-radius:8px">
+            <h2 id="mediaHeading">DK Media Group<sup style="font-size:.6rem;color:var(--muted)">™</sup></h2>
+          </div>
+          <p style="color:var(--muted)">Production, events, photography, and creative services.</p>
+
+          <div style="margin-top:14px" class="card">
+            <h4>Photo Gallery</h4>
+            <div class="gallery-grid" id="galleryGrid">
+              <img src="assets/images/media-photo-1.jpg" alt="Media photo 1" class="gallery-thumb">
+              <img src="assets/images/media-photo-2.jpg" alt="Media photo 2" class="gallery-thumb">
+              <img src="assets/images/media-photo-3.jpg" alt="Media photo 3" class="gallery-thumb">
+            </div>
+          </div>
+
+          <div style="margin-top:14px" class="card">
+            <h4>Video Gallery</h4>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+              <div class="card" style="padding:8px">
+                <div class="play-thumb" data-video="assets/videos/media-sample1.mp4" role="button" tabindex="0">
+                  <img src="assets/images/video-thumb1.jpg" alt="Media video 1" style="height:120px;object-fit:cover;border-radius:8px">
+                  <div style="margin-top:8px;color:var(--muted)">Project Trailer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><strong>Company Phone:</strong> 256-348-8821</p>
-      <p><strong>Email:</strong> info@dreamkeepers.net</p>
+    <!-- DK TECH -->
+    <section id="dk-tech" class="page" role="region" aria-labelledby="techHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="assets/images/logo/dreamkeeperslogo-small.jpg" alt="DK Tech" style="width:80px;border-radius:8px">
+            <h2 id="techHeading">DK Tech<sup style="font-size:.6rem;color:var(--muted)">™</sup></h2>
+          </div>
+          <p style="color:var(--muted)">Software, hardware, M-Hart 1.0, and advanced integrations.</p>
+
+          <div style="margin-top:12px" class="card">
+            <h4>Projects</h4>
+            <div style="margin-top:8px;color:var(--muted)">
+              <strong>M-Hart 1.0</strong> — Consumer platform integrating DK AI features: voice cloning, call answering, transcription, and visual AI processing.<br>
+              <strong>Neural Interface (concept)</strong> — Exploratory research on advanced human-AI interaction models.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="page" role="region" aria-labelledby="galleryHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <h2 id="galleryHeading">Gallery</h2>
+          <p style="color:var(--muted)">Browse photos and videos. Click any image to open the viewer.</p>
+          <div class="gallery-grid" id="galleryAll">
+            <!-- copies of gallery thumbs; you can add more files in assets/images/ -->
+            <img src="assets/images/media-photo-1.jpg" alt="Gallery 1" class="gallery-thumb">
+            <img src="assets/images/media-photo-2.jpg" alt="Gallery 2" class="gallery-thumb">
+            <img src="assets/images/media-photo-3.jpg" alt="Gallery 3" class="gallery-thumb">
+            <img src="assets/images/team/Deaundrey_DK_Krueger.jpg" alt="DK Photo" class="gallery-thumb">
+            <img src="assets/images/team/Matthew_Hartzell.jpg" alt="Matthew Photo" class="gallery-thumb">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page" role="region" aria-labelledby="contactHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <h2 id="contactHeading">Contact & Bookings</h2>
+          <p style="color:var(--muted)">For bookings and inquiries, use the contact form or call the company line.</p>
+          <form id="contactForm" class="card" style="margin-top:12px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <input class="input" name="name" placeholder="Full name" required>
+              <input class="input" name="email" placeholder="Email" required>
+            </div>
+            <div style="margin-top:10px">
+              <input class="input" name="subject" placeholder="Subject">
+            </div>
+            <div style="margin-top:10px">
+              <textarea class="input" name="message" placeholder="Message" rows="6"></textarea>
+            </div>
+            <div style="margin-top:10px">
+              <button type="submit" class="btn">Send message</button>
+              <button type="button" class="btn ghost" id="contactDemo">Demo: Fill</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN (login modal opens, dashboard is a page section) -->
+    <section id="admin" class="page" role="region" aria-labelledby="adminHeading">
+      <div class="site-wrap">
+        <div class="card">
+          <h2 id="adminHeading">Admin Area</h2>
+          <p style="color:var(--muted)">This area is protected by a demo login. For production, you must implement server-side authentication and secure uploads (notes in code).</p>
+          <div style="margin-top:12px">
+            <button class="btn" id="openLogin">Open Admin Login</button>
+            <button class="btn ghost" id="logoutAdmin" style="margin-left:8px">Logout</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD (hidden unless logged in) -->
+    <section id="dashboard" class="page" role="region" aria-labelledby="dashboardHeading" aria-hidden="true">
+      <div class="site-wrap">
+        <div style="display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap">
+          <div style="flex:1;min-width:320px">
+            <div class="card">
+              <h2 id="dashboardHeading">Admin Dashboard</h2>
+              <p style="color:var(--muted)">Staff-only tools: upload media, edit content, and manage site previews. Reminder: this UI requires backend endpoints to be secure in production.</p>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Upload Media</h3>
+              <form id="uploadForm">
+                <div class="upload-box" id="uploadBox" tabindex="0">
+                  <p style="color:var(--muted)">Drag & drop files here or click to choose (images/videos)</p>
+                  <input id="fileInput" type="file" name="files" multiple accept="image/*,video/*" class="hidden">
+                </div>
+                <div class="preview-grid" id="uploadPreview"></div>
+                <div style="margin-top:10px">
+                  <button class="btn" type="submit">Upload to Server (demo)</button>
+                  <span style="margin-left:12px;color:var(--muted)">Server endpoint: <code>/api/upload</code></span>
+                </div>
+              </form>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Content Editor (simple)</h3>
+              <p style="color:var(--muted)">Edit site copy in this quick editor and click "Save" to POST to your content API (not included).</p>
+              <div contenteditable="true" id="contentEditor" style="min-height:120px;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.01)">Welcome to the Dream Keepers editor. Replace this text with live content.</div>
+              <div style="margin-top:10px">
+                <button class="btn" id="saveContent">Save Content (demo)</button>
+                <span style="margin-left:12px;color:var(--muted)">Server endpoint: <code>/api/content/save</code></span>
+              </div>
+            </div>
+          </div>
+
+          <aside style="width:380px;max-width:100%">
+            <div class="card">
+              <h3>Admin Info</h3>
+              <p style="color:var(--muted)">Signed in as: <strong id="adminUser">—</strong></p>
+              <p style="color:var(--muted)">For production security implement:</p>
+              <ul style="color:var(--muted)">
+                <li>HTTPS + secure cookies (HttpOnly)</li>
+                <li>Server-side authentication & RBAC</li>
+                <li>Hashed passwords (bcrypt/argon2)</li>
+                <li>Server-side file validation & virus scanning</li>
+                <li>Rate limiting, CSRF protection</li>
+              </ul>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Quick Actions</h3>
+              <button class="btn ghost" id="refreshGallery">Refresh Gallery</button>
+              <button class="btn ghost" id="clearPreviews" style="margin-left:8px">Clear Previews</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <img src="images/logo.png" alt="Dream Keepers Logo">
-    <p>© 2025 Dream Keepers — Awake. Creating what others only dream.</p>
+  <!-- LIGHTBOX DISPLAY -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <div class="lightbox-inner card">
+      <button id="lightboxClose" class="lightbox-close" aria-label="Close viewer">✕</button>
+      <div id="lightboxContent" class="lightbox-content"></div>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL (admin) -->
+  <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-label="Admin login">
+    <div class="modal-card">
+      <h3>Admin Login</h3>
+      <p style="color:var(--muted)">Sign in to access the staff dashboard. (Demo login fallback included for testing.)</p>
+      <form id="adminLoginForm">
+        <div class="form-row">
+          <input class="input" name="email" type="email" placeholder="email" required>
+        </div>
+        <div class="form-row">
+          <input class="input" name="password" type="password" placeholder="password" required>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn" type="submit">Sign in</button>
+          <button class="btn ghost" type="button" id="closeLogin">Cancel</button>
+        </div>
+        <p style="margin-top:8px;color:var(--muted);font-size:13px">Demo credentials: <code>admin@dreamkeepers.net</code> / <code>DKadmin!2025</code> (for local testing only)</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-wrap">
+      © <span id="yearSpan"></span> Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup> — dreamkeepers.net
+    </div>
   </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    /*************************************************************************
+     * Dream Keepers - Single-file multi-section site
+     * - All navigation is in-page (hash + data-section)
+     * - Admin login and dashboard are frontend-demo only; implement server-side
+     * ************************************************************************/
+
+    (function(){
+      // Elements & state
+      const sections = Array.from(document.querySelectorAll('.page'));
+      const navLinks = Array.from(document.querySelectorAll('nav.main-nav a, .brand-link'));
+      const lightbox = document.getElementById('lightbox');
+      const lbContent = document.getElementById('lightboxContent');
+      const lbClose = document.getElementById('lightboxClose');
+      const loginModal = document.getElementById('loginModal');
+      const adminLoginForm = document.getElementById('adminLoginForm');
+      const openLoginBtn = document.getElementById('openLogin');
+      const closeLoginBtn = document.getElementById('closeLogin');
+      const dashboardSection = document.getElementById('dashboard');
+      const adminNav = document.getElementById('adminNav');
+      const logoutBtn = document.getElementById('logoutAdmin');
+      const yearSpan = document.getElementById('yearSpan');
+      yearSpan && (yearSpan.textContent = new Date().getFullYear());
+
+      // helpers
+      function showSection(id){
+        // hide all then show requested
+        sections.forEach(s => s.classList.remove('active'));
+        const el = document.getElementById(id);
+        if(el){
+          el.classList.add('active');
+          // update hash quietly
+          try{ history.replaceState(null,'', '#'+id); }catch(e){}
+          // update nav active
+          document.querySelectorAll('.main-nav a').forEach(a=>{
+            a.classList.toggle('active', a.getAttribute('data-section') === id || (a.getAttribute('href') === '#'+id));
+          });
+        }
+      }
+
+      // init: set section from hash or default home
+      const initial = (window.location.hash || '').replace('#','') || 'home';
+      if(document.getElementById(initial)) showSection(initial);
+      else showSection('home');
+
+      // bind nav links
+      navLinks.forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          const sec = a.getAttribute('data-section') || (a.getAttribute('href')||'').replace('#','');
+          if(sec){
+            e.preventDefault();
+            // small animation: fade current out and fade new in
+            document.documentElement.style.cursor = 'wait';
+            showSection(sec);
+            setTimeout(()=> document.documentElement.style.cursor = '', 160);
+          }
+        });
+      });
+
+      // buttons with data-section
+      document.querySelectorAll('[data-section]').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          const sec = btn.getAttribute('data-section');
+          if(sec) showSection(sec);
+        });
+      });
+
+      // Lightbox
+      function openLightboxHTML(html){
+        lbContent.innerHTML = html;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        lbContent.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+      // gallery click
+      document.querySelectorAll('.gallery-thumb').forEach(img=>{
+        img.addEventListener('click', ()=>{
+          const src = img.getAttribute('src');
+          openLightboxHTML('<img src="'+src+'" alt="'+(img.alt||'')+'">');
+        });
+      });
+      document.querySelectorAll('.play-thumb').forEach(div=>{
+        div.addEventListener('click', ()=>{
+          const src = div.dataset.video;
+          if(src){
+            openLightboxHTML('<video controls autoplay style="max-width:100%"><source src="'+src+'" type="video/mp4">Your browser does not support the video tag.</video>');
+          }
+        });
+        div.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') div.click(); });
+      });
+
+      lbClose && lbClose.addEventListener('click', closeLightbox);
+      lightbox && lightbox.addEventListener('click', (e)=> { if(e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keyup', (e)=> { if(e.key === 'Escape') closeLightbox(); });
+
+      // ================= ADMIN LOGIN & DASHBOARD (CLIENT DEMO) =================
+      // SECURITY: this is a frontend demo only.
+      // Replace client-side validation with server-side auth endpoints.
+      function openLogin(){ loginModal.classList.add('show'); loginModal.setAttribute('aria-hidden','false'); }
+      function closeLogin(){ loginModal.classList.remove('show'); loginModal.setAttribute('aria-hidden','true'); }
+
+      openLoginBtn && openLoginBtn.addEventListener('click', openLogin);
+      closeLoginBtn && closeLoginBtn.addEventListener('click', closeLogin);
+
+      // Simple auth state saved in sessionStorage for demo only
+      function setAuth(user){ sessionStorage.setItem('dk_admin_user', JSON.stringify(user)); updateAuthState(); }
+      function clearAuth(){ sessionStorage.removeItem('dk_admin_user'); updateAuthState(); }
+      function getAuth(){ try{ return JSON.parse(sessionStorage.getItem('dk_admin_user')||'null'); } catch(e){ return null; } }
+
+      function updateAuthState(){
+        const user = getAuth();
+        const adminUserEl = document.getElementById('adminUser');
+        if(user){
+          adminUserEl && (adminUserEl.textContent = user.email || user.name || 'admin');
+          dashboardSection.classList.add('active');
+          dashboardSection.setAttribute('aria-hidden','false');
+          // show dashboard page (jump)
+          showSection('dashboard');
+        } else {
+          // hide dashboard
+          dashboardSection.classList.remove('active');
+          dashboardSection.setAttribute('aria-hidden','true');
+        }
+      }
+
+      // Handle login form submit
+      adminLoginForm && adminLoginForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const form = e.currentTarget;
+        const email = form.email.value.trim();
+        const password = form.password.value;
+        if(!email || !password){ alert('Enter email and password'); return; }
+
+        // Attempt to call server endpoint - you must implement POST /api/login to validate
+        try{
+          const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({email, password})
+          });
+          if(res.ok){
+            // server must set secure cookie and/or return session token; example returns {user:{...}}
+            const json = await res.json().catch(()=>({user:{email}}));
+            setAuth(json.user || {email});
+            closeLogin();
+            alert('Logged in (server confirmed). Redirected to dashboard.');
+            return;
+          } else {
+            const err = await res.json().catch(()=>({message:'Login failed'}));
+            alert(err.message || 'Login failed');
+            return;
+          }
+        }catch(err){
+          // Demo fallback: allow local dev credential (ONLY FOR TESTING)
+          console.warn('Login fetch failed (demo):', err);
+          if(email === 'admin@dreamkeepers.net' && password === 'DKadmin!2025'){
+            setAuth({email: 'admin@dreamkeepers.net', name: 'Admin'});
+            closeLogin();
+            alert('Demo login accepted. In production implement server auth.');
+            return;
+          }
+          alert('Login error. Implement /api/login on server for production or use demo credentials.');
+        }
+      });
+
+      // Logout
+      logoutBtn && logoutBtn.addEventListener('click', ()=>{
+        clearAuth();
+        alert('Logged out (demo).');
+        showSection('home');
+      });
+
+      // Initialize auth state on load
+      updateAuthState();
+
+      // ============ UPLOAD DRAG & DROP + PREVIEW =============
+      const uploadBox = document.getElementById('uploadBox');
+      const fileInput = document.getElementById('fileInput');
+      const uploadPreview = document.getElementById('uploadPreview');
+      const uploadForm = document.getElementById('uploadForm');
+
+      // helper to preview files
+      function previewFiles(files){
+        uploadPreview.innerHTML = '';
+        Array.from(files).forEach(f=>{
+          const reader = new FileReader();
+          reader.onload = function(e){
+            const ext = f.name.split('.').pop().toLowerCase();
+            if(['png','jpg','jpeg','gif','webp'].includes(ext)){
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              uploadPreview.appendChild(img);
+            } else if(['mp4','webm','ogg'].includes(ext)){
+              const vid = document.createElement('video');
+              vid.src = e.target.result;
+              vid.controls = true;
+              vid.style.width = '100%';
+              vid.style.height = '90px';
+              vid.style.objectFit = 'cover';
+              const wrapper = document.createElement('div');
+              wrapper.appendChild(vid);
+              uploadPreview.appendChild(wrapper);
+            } else {
+              const p = document.createElement('div'); p.textContent = f.name; p.style.color = 'var(--muted)'; uploadPreview.appendChild(p);
+            }
+          };
+          reader.readAsDataURL(f);
+        });
+      }
+
+      // drag/drop behavior
+      if(uploadBox){
+        uploadBox.addEventListener('click', ()=> fileInput.click());
+        uploadBox.addEventListener('dragover', (e)=>{ e.preventDefault(); uploadBox.style.opacity = 0.9; });
+        uploadBox.addEventListener('dragleave', ()=>{ uploadBox.style.opacity = 1; });
+        uploadBox.addEventListener('drop', (e)=>{ e.preventDefault(); uploadBox.style.opacity = 1; const files = e.dataTransfer.files; fileInput.files = files; previewFiles(files); });
+      }
+      fileInput && fileInput.addEventListener('change', (e)=> previewFiles(e.target.files));
+
+      // submit upload (demo)
+      uploadForm && uploadForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const files = fileInput.files;
+        if(!files || files.length === 0){ alert('Select files to upload'); return; }
+        // demo: POST to /api/upload; you must implement server-side handling
+        const fd = new FormData();
+        Array.from(files).forEach((f, i)=> fd.append('files[]', f));
+        try{
+          const res = await fetch('/api/upload', { method:'POST', body: fd });
+          if(res.ok){
+            alert('Upload accepted (server must store files).');
+            fileInput.value = '';
+            uploadPreview.innerHTML = '';
+          } else {
+            const json = await res.json().catch(()=>({message:'Upload failed'}));
+            alert(json.message || 'Upload failed');
+          }
+        }catch(err){
+          console.warn('Upload failed (demo):', err);
+          alert('Upload request failed. Implement /api/upload on server for production.');
+        }
+      });
+
+      // quick admin actions
+      document.getElementById('refreshGallery') && document.getElementById('refreshGallery').addEventListener('click', ()=>{
+        // For demo: just re-run gallery binding (in production, refresh from server listing)
+        document.querySelectorAll('.gallery-thumb').forEach(img=>{
+          img.removeEventListener('click', ()=>{});
+        });
+        document.querySelectorAll('.gallery-thumb').forEach(img=>{
+          img.addEventListener('click', ()=>{ openLightboxHTML('<img src="'+img.src+'">') });
+        });
+        alert('Gallery refreshed (demo).');
+      });
+      document.getElementById('clearPreviews') && document.getElementById('clearPreviews').addEventListener('click', ()=> uploadPreview.innerHTML = '');
+
+      // content editor save (demo)
+      const saveContentBtn = document.getElementById('saveContent');
+      if(saveContentBtn){
+        saveContentBtn.addEventListener('click', async ()=>{
+          const html = document.getElementById('contentEditor').innerHTML;
+          try{
+            const res = await fetch('/api/content/save', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({html}) });
+            if(res.ok){ alert('Content saved (server).'); }
+            else { alert('Content save failed — implement server endpoint.'); }
+          }catch(err){
+            console.warn('Content save error (demo):', err);
+            alert('Content save failed (demo). Implement server endpoint to persist content.');
+          }
+        });
+      }
+
+      // contact form demo
+      const contactForm = document.getElementById('contactForm');
+      contactForm && contactForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const data = new FormData(contactForm);
+        // demo: show message and attempt to POST to /api/contact
+        try{
+          const res = await fetch('/api/contact', { method:'POST', body: data });
+          if(res.ok){ alert('Message sent.'); contactForm.reset(); }
+          else { alert('Failed to send (impl server).'); }
+        }catch(err){
+          console.warn('Contact send (demo):', err);
+          alert('Contact send blocked — implement /api/contact on server for production.');
+        }
+      });
+      document.getElementById('contactDemo') && document.getElementById('contactDemo').addEventListener('click', ()=>{
+        contactForm.name.value = 'Demo User';
+        contactForm.email.value = 'demo@dreamkeepers.net';
+        contactForm.subject.value = 'Booking Inquiry';
+        contactForm.message.value = 'This is a demo message.';
+      });
+
+      // ensure gallery thumbs open
+      document.querySelectorAll('.gallery-thumb').forEach(img=>{
+        img.addEventListener('click', ()=> openLightboxHTML('<img src="'+img.src+'" alt="'+(img.alt||'')+'">'));
+      });
+
+      // keyboard navigation accessibility: allow nav via left/right arrow between pages
+      let sectionIds = Array.from(document.querySelectorAll('.page')).map(s=>s.id);
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+          const current = sectionIds.findIndex(id => document.getElementById(id).classList.contains('active'));
+          let next = current;
+          if(e.key === 'ArrowRight') next = Math.min(sectionIds.length -1, current +1);
+          if(e.key === 'ArrowLeft') next = Math.max(0, current -1);
+          if(next !== current) showSection(sectionIds[next]);
+        }
+      });
+
+      // End of IIFE
+    })();
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
