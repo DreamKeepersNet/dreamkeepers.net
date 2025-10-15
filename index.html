@@ -3,35 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dream Keepers™ — dreamkeepers.net</title>
-  <meta name="description" content="Dream Keepers — media & tech studio.">
+  <title>Dream Keepers™ — AWAKE, creating what others only dream.</title>
+  <meta name="description" content="AWAKE, creating what others only dream. Dream Keepers merges human creativity and AI to build the future." />
+  <link rel="icon" href="images/dreamkeeperslogo.JPG" type="image/jpeg">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/dreamkeeperslogo.JPG" type="image/jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#071126;
-      --panel:#0b1420;
+      --bg:#06070a;
+      --panel:#0d1115;
       --muted:#9fb0c2;
-      --text:#eef6fb;
+      --accent:#00aaff;
       --gold:#d4af37;
       --glass: rgba(255,255,255,0.03);
+      --text:#e9f2f7;
       --radius:12px;
       --maxw:1200px;
-      --header-h:76px;
+      --header-h:72px;
       --ease: cubic-bezier(.16,.84,.24,1);
     }
+
+    /* Reset */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg,var(--bg), #041018 85%);
       color:var(--text);
-      background: linear-gradient(180deg,var(--bg), #041022 85%);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
@@ -44,286 +45,590 @@
     /* Header */
     header.site-header{
       position:sticky;top:0;left:0;right:0;height:var(--header-h);
-      display:flex;align-items:center;justify-content:space-between;padding:10px 22px;
-      background:linear-gradient(180deg, rgba(6,10,18,0.6), rgba(6,10,18,0.4));
-      border-bottom:1px solid rgba(255,255,255,0.03);z-index:120;
-      backdrop-filter: blur(6px);
+      display:flex;align-items:center;justify-content:space-between;padding:10px 24px;
+      background:linear-gradient(180deg, rgba(4,7,11,0.72), rgba(4,7,11,0.42));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      z-index:120;backdrop-filter: blur(6px);
     }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 8px 26px rgba(0,0,0,0.6)}
-    .brand .title{font-family:'Poppins',Inter,sans-serif;font-weight:600;font-size:18px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .brand .title{font-family:'Orbitron',sans-serif;font-weight:700;font-size:18px}
     nav.main-nav{display:flex;gap:12px;align-items:center}
-    nav.main-nav a{color:var(--muted);padding:8px 10px;border-radius:8px;transition:all .18s var(--ease)}
+    nav.main-nav a{color:var(--muted);padding:8px 12px;border-radius:8px;transition:all .18s var(--ease)}
     nav.main-nav a:hover, nav.main-nav a.active{background:var(--glass);color:var(--text)}
 
+    /* Sections (simulate pages) */
     main{min-height:calc(100vh - var(--header-h));}
-
-    /* Pages as sections */
     section.page{
       min-height:calc(100vh - var(--header-h));
       padding:calc(var(--header-h) + 28px) 20px 60px;
+      opacity:0;transform:translateY(8px);transition:opacity .36s var(--ease), transform .36s var(--ease);
       display:none;
-      opacity:0;
-      transform:translateY(8px);
-      transition:opacity .36s var(--ease), transform .36s var(--ease);
     }
     section.page.active{display:block;opacity:1;transform:none}
 
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 12px 30px rgba(2,6,15,0.55)}
-
     /* Hero */
-    .hero{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:28px}
-    .hero-left{flex:1}
-    .hero-right{width:360px;max-width:42%}
-    .hero img.logo-large{width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,15,0.6)}
-    h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:34px;margin:0 0 8px;color:var(--gold)}
-    p.lead{color:var(--muted);margin:0 0 18px}
-
-    .btn{display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#e6c66b);color:#06101a;font-weight:800;border:0;cursor:pointer}
+    .hero-card{max-width:1100px;margin:0 auto;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);text-align:left;border:1px solid rgba(255,255,255,0.03)}
+    .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center}
+    .hero-title{font-family:'Orbitron',sans-serif;font-size:36px;color:var(--gold);margin:0}
+    .motto{color:var(--muted);margin-top:8px;font-weight:600}
+    .ctas{margin-top:18px}
+    .btn{display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#6c8cff);color:#02110e;font-weight:800;border:0;cursor:pointer}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
+    /* Cards / Panels */
+    .card{background:var(--panel);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .muted{color:var(--muted)}
+
+    /* Divisions */
+    .divisions{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    .division-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px;padding:20px;min-width:260px;max-width:320px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s var(--ease)}
+    .division-card:hover{transform:translateY(-8px);box-shadow:0 22px 40px rgba(2,6,18,0.6)}
+
     /* Team */
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
-    .team-card{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+    .team-card{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
     .team-card img{width:96px;height:96px;object-fit:cover;border-radius:8px}
     .team-info h4{margin:0}
-    .role{color:var(--gold);font-weight:600;margin:6px 0}
+    .role{color:var(--accent);font-weight:600;margin:6px 0}
 
-    /* Gallery */
+    /* Galleries */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:12px}
     .gallery-item{width:100%;height:140px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
     .video-thumb{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;background:#071018;padding:6px}
     .play-overlay{position:absolute;left:12px;top:10px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,0.45);font-weight:700;color:#fff}
 
     /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(2,6,15,0.9);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px;opacity:0;pointer-events:none;transition:opacity .18s}
+    .lightbox{position:fixed;inset:0;background:rgba(1,2,4,0.88);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px;opacity:0;pointer-events:none;transition:opacity .18s}
     .lightbox.show{opacity:1;pointer-events:auto}
     .lightbox-inner{max-width:1100px;width:100%;position:relative}
     .lightbox-close{position:absolute;right:8px;top:8px;background:transparent;border:0;color:var(--text);font-size:24px;cursor:pointer}
     .lightbox-content img, .lightbox-content video{max-width:100%;height:auto;border-radius:8px;display:block;margin:0 auto}
 
-    /* Admin & dashboard */
-    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:1500;padding:20px;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .18s}
-    .modal.show{opacity:1;pointer-events:auto}
-    .modal-card{width:100%;max-width:560px;background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .input{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);margin-top:8px}
-
-    .dashboard{max-width:1200px;margin:0 auto}
-    .dashboard-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
-    .upload-box{border:2px dashed rgba(255,255,255,0.04);padding:12px;border-radius:10px;text-align:center;cursor:pointer}
+    /* Admin dashboard */
+    .dashboard-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px}
+    .upload-box{border:2px dashed rgba(255,255,255,0.04);padding:14px;border-radius:10px;text-align:center;cursor:pointer}
     .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
     .preview-grid img, .preview-grid video{width:100%;height:90px;object-fit:cover;border-radius:8px}
 
-    footer.site-footer{padding:18px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:40px}
+    footer.site-footer{padding:18px 28px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:40px}
 
-    .hidden{display:none}
+    /* Responsive */
     @media (max-width:980px){
-      .hero{flex-direction:column;align-items:flex-start}
+      .hero-grid{grid-template-columns:1fr}
       .dashboard-grid{grid-template-columns:1fr}
-      .hero-right{width:100%}
-      header.site-header{padding:8px 14px}
+      header.site-header{padding:10px 14px}
+    }
+    @media (max-width:480px){
+      .hero-title{font-size:28px}
+      .brand img{width:48px;height:48px}
     }
   </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="site-header" role="banner">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:12px">
-      <a href="#home" class="brand-link" data-section="home" aria-label="Go to Home">
-        <div class="brand">
-          <img src="images/dreamkeeperslogo.JPG" alt="Dream Keepers™ logo" id="siteLogo">
-          <div style="margin-left:10px">
-            <div class="title">Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup></div>
-            <div style="font-size:12px;color:var(--muted)">Awake. Creating what others only dream.</div>
+  <!-- SITE HEADER -->
+  <header class="site-header" role="banner">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between">
+      <div class="brand" style="gap:12px">
+        <a href="#home" class="brand-link" data-section="home" aria-label="Dream Keepers home">
+          <img src="images/dreamkeeperslogo.JPG" alt="Dream Keepers™ logo">
+        </a>
+        <div style="display:flex;flex-direction:column">
+          <div class="title" style="font-family:'Orbitron',sans-serif;font-weight:700;color:var(--gold)">Dream Keepers<sup style="font-size:.6rem;color:var(--muted);vertical-align:super">™</sup></div>
+          <div style="font-size:12px;color:var(--muted)">AWAKE, creating what others only dream.</div>
+        </div>
+      </div>
+
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <a href="#home" data-section="home" class="nav-link active">Home</a>
+        <a href="#about" data-section="about" class="nav-link">About</a>
+        <a href="#dk-media" data-section="dk-media" class="nav-link">DK Media</a>
+        <a href="#dk-tech" data-section="dk-tech" class="nav-link">DK Tech</a>
+        <a href="#gallery" data-section="gallery" class="nav-link">Gallery</a>
+        <a href="#contact" data-section="contact" class="nav-link">Contact</a>
+        <a href="#admin" data-section="admin" class="nav-link">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active" aria-labelledby="homeHeading">
+      <div class="wrap">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div>
+              <h1 class="hero-title" id="homeHeading">Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup></h1>
+              <div class="motto">AWAKE, creating what others only dream.</div>
+              <p class="muted" style="margin-top:12px">Merging human creativity with AI innovation to build resilient media and technology.</p>
+
+              <div class="ctas">
+                <button class="btn" data-section="dk-media">Explore DK Media</button>
+                <button class="btn ghost" data-section="dk-tech" style="margin-left:10px">Explore DK Tech</button>
+              </div>
+
+              <div style="margin-top:18px" class="card muted">
+                <strong>Quick actions:</strong> Use Admin → Upload to add images & videos to each division. Uploaded items persist in your browser.
+              </div>
+            </div>
+
+            <div style="text-align:center">
+              <img src="images/dreamkeeperslogo.JPG" alt="Dream Keepers logo" style="width:260px;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,0.6)">
+            </div>
           </div>
         </div>
-      </a>
-    </div>
 
-    <nav class="main-nav" role="navigation" aria-label="Main navigation">
-      <a href="#home" data-section="home" class="nav-link active">Home</a>
-      <a href="#about" data-section="about" class="nav-link">About</a>
-      <a href="#dk-media" data-section="dk-media" class="nav-link">DK Media Group</a>
-      <a href="#dk-tech" data-section="dk-tech" class="nav-link">DK Tech</a>
-      <a href="#gallery" data-section="gallery" class="nav-link">Gallery</a>
-      <a href="#contact" data-section="contact" class="nav-link">Contact</a>
-      <a href="#admin" data-section="admin" class="nav-link" id="adminNav">Admin</a>
-    </nav>
+        <div style="margin-top:18px;text-align:center">
+          <div class="divisions" role="list" aria-label="Divisions">
+            <a class="division-card" href="#dk-media" aria-label="Visit DK Media">
+              <h3>DK Media Group<sup class="tm">™</sup></h3>
+              <p class="muted">Media production · Events · Content</p>
+            </a>
+
+            <a class="division-card" href="#dk-tech" aria-label="Visit DK Tech">
+              <h3>DK Tech<sup class="tm">™</sup></h3>
+              <p class="muted">Software · Hardware · R&D</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page" aria-labelledby="aboutHeading">
+      <div class="wrap">
+        <div class="card">
+          <h2 id="aboutHeading">About Dream Keepers<sup class="tm">™</sup></h2>
+          <p class="muted">We blend creative storytelling with technical craftsmanship to launch ideas into the world.</p>
+
+          <div style="margin-top:18px" class="about-grid">
+            <div class="panel">
+              <h3>Mission</h3>
+              <p>To build meaningful media and resilient technology that empower creators and innovators.</p>
+            </div>
+
+            <div class="panel">
+              <h3>Values</h3>
+              <ul style="margin:6px 0 0 18px;color:var(--muted)">
+                <li>Clarity</li>
+                <li>Innovation</li>
+                <li>Integrity</li>
+              </ul>
+            </div>
+          </div>
+
+          <hr style="border:none;height:1px;background:rgba(255,255,255,0.02);margin:18px 0">
+
+          <h3>Team — Dream Keepers</h3>
+          <div class="team-grid">
+            <article class="team-card" aria-label="Deaundrey DK Krueger">
+              <img src="images/IMG_2545.JPG" alt="Deaundrey DK Krueger">
+              <div class="team-info">
+                <h4>Deaundrey "DK" Krueger</h4>
+                <div class="role">Founder &amp; CEO</div>
+                <p class="muted">Visionary innovator leading AI & media integration and the M-Hart project.</p>
+              </div>
+            </article>
+
+            <article class="team-card" aria-label="Matthew Hartzell">
+              <img src="images/IMG_2555.JPG" alt="Matthew Hartzell">
+              <div class="team-info">
+                <h4>Matthew Hartzell</h4>
+                <div class="role">Vice President &amp; Co-Programmer</div>
+                <p class="muted">Lead engineer and co-developer of M-Hart 1.0; focused on architecture and R&D.</p>
+              </div>
+            </article>
+
+            <article class="team-card" aria-label="Stephen Cartwright">
+              <img src="images/IMG_2799.JPG" alt="Stephen Cartwright">
+              <div class="team-info">
+                <h4>Stephen Cartwright</h4>
+                <div class="role">Head of Media &amp; Client Accounts</div>
+                <p class="muted">Oversees production, editing, and client media for DK Media Group.</p>
+              </div>
+            </article>
+
+            <article class="team-card" aria-label="Kenneth Miles">
+              <img src="images/IMG_2619.JPG" alt="Kenneth Miles">
+              <div class="team-info">
+                <h4>Kenneth Miles</h4>
+                <div class="role">Head of Security</div>
+                <p class="muted">Leads security, data integrity, and operational safety across the company.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DK MEDIA -->
+    <section id="dk-media" class="page" aria-labelledby="mediaHeading">
+      <div class="wrap">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <img src="images/dreamkeeperslogo.JPG" alt="DK Media logo" style="width:86px;border-radius:8px">
+          <h2 id="mediaHeading">DK Media Group<sup class="tm">™</sup></h2>
+        </div>
+
+        <p class="muted" style="margin-top:8px">Production, events, photography, and creative services.</p>
+
+        <div style="margin-top:14px" class="card">
+          <h4>Photo Gallery — DK Media</h4>
+          <div class="gallery-grid" id="mediaGallery"></div>
+
+          <h4 style="margin-top:14px">Video Gallery — DK Media</h4>
+          <div class="gallery-grid" id="mediaVideoGallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DK TECH -->
+    <section id="dk-tech" class="page" aria-labelledby="techHeading">
+      <div class="wrap">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <img src="images/dreamkeeperslogo.JPG" alt="DK Tech logo" style="width:86px;border-radius:8px">
+          <h2 id="techHeading">DK Tech<sup class="tm">™</sup></h2>
+        </div>
+
+        <p class="muted" style="margin-top:8px">Software, hardware, M-Hart 1.0, and advanced integrations.</p>
+
+        <div style="margin-top:14px" class="card">
+          <h4>Photo Gallery — DK Tech</h4>
+          <div class="gallery-grid" id="techGallery"></div>
+
+          <h4 style="margin-top:14px">Video Gallery — DK Tech</h4>
+          <div class="gallery-grid" id="techVideoGallery"></div>
+        </div>
+
+        <h3 style="margin-top:18px">Projects</h3>
+        <div class="card project-list">
+          <div style="margin-bottom:10px">
+            <h4>M-Hart 1.0</h4>
+            <p class="muted">Consumer platform integrating DK AI features: voice cloning, call answering, transcription, and visual AI processing.</p>
+          </div>
+          <div>
+            <h4>Neural Interface Research (concept)</h4>
+            <p class="muted">Exploratory research on advanced human-AI interaction models and secure data flows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (global) -->
+    <section id="gallery" class="page" aria-labelledby="galleryHeading">
+      <div class="wrap">
+        <div class="card">
+          <h2 id="galleryHeading">Gallery — All Media</h2>
+          <p class="muted">Static repo images plus any uploaded media from Admin appear here.</p>
+          <div class="gallery-grid" id="globalGallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page" aria-labelledby="contactHeading">
+      <div class="wrap">
+        <div class="card">
+          <h2 id="contactHeading">Contact</h2>
+          <p class="muted">For bookings, inquiries, or press reach out to our team.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+            <div>
+              <p><strong>Phone:</strong> (256) 348-8821</p>
+              <p><strong>Email:</strong> info@dreamkeepers.net</p>
+            </div>
+            <div>
+              <form id="contactForm">
+                <input id="contactName" placeholder="Name" style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)" required>
+                <input id="contactEmail" placeholder="Email" style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);margin-top:8px" required>
+                <textarea id="contactMessage" placeholder="Message" rows="4" style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);margin-top:8px" required></textarea>
+                <div style="margin-top:8px">
+                  <button class="btn" type="submit">Send message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="page" aria-labelledby="adminHeading">
+      <div class="wrap">
+        <div class="card">
+          <h2 id="adminHeading">Admin Dashboard</h2>
+          <p class="muted">Upload images & videos to each division. Files are stored locally in your browser (IndexedDB) so they persist on this machine and browser profile.</p>
+
+          <div class="card" style="margin-top:12px">
+            <label style="display:block;margin-bottom:8px;color:var(--muted)">Choose Division</label>
+            <select id="divisionSelect" style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)">
+              <option value="dk-media">DK Media</option>
+              <option value="dk-tech">DK Tech</option>
+              <option value="gallery">Global Gallery</option>
+            </select>
+
+            <div id="uploadBox" class="upload-box" tabindex="0" style="margin-top:12px">Click or drop files here (images & videos)</div>
+            <input id="fileInput" type="file" accept="image/*,video/*" multiple class="hidden">
+            <div id="uploadPreview" class="preview-grid"></div>
+
+            <div style="margin-top:12px">
+              <button class="btn" id="saveUploadBtn">Save to Division</button>
+              <button class="btn ghost" id="clearDivisionBtn" style="margin-left:8px">Clear Division Storage</button>
+            </div>
+            <p class="muted" style="margin-top:8px">Note: This is a local admin UI. For server-backed uploads and sharing between devices, implement server endpoints.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner card">
+      <button id="lightboxClose" class="lightbox-close" aria-label="Close viewer">✕</button>
+      <div id="lightboxContent" class="lightbox-content"></div>
+    </div>
   </div>
-</header>
 
-<main>
-  <!-- HOME -->
-  <section id="home" class="page active" role="region" aria-labelledby="homeTitle">
-    <div class="wrap hero">
-      <div class="hero-left">
-        <h1 id="homeTitle">Dream Keepers™</h1>
-        <p class="lead">Awake. Creating what others only dream. Media production & technology innovation, all under one roof.</p>
-        <button class="btn" onclick="scrollToSection('about')">Meet the Team</button>
-      </div>
-      <div class="hero-right">
-        <img src="images/dreamkeeperslogo.JPG" alt="Dream Keepers Logo" class="logo-large">
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="page" role="region" aria-labelledby="aboutTitle">
+  <!-- FOOTER -->
+  <footer class="site-footer" id="siteFooter">
     <div class="wrap">
-      <h2 id="aboutTitle">About Us</h2>
-      <p class="lead">Dream Keepers™ unites creative media with innovative technology. Meet our passionate team below.</p>
-      <div class="team-grid">
-        <div class="team-card">
-          <img src="images/team1.jpg" alt="DeAndre Kruger">
-          <div class="team-info">
-            <h4>DeAndre Kruger</h4>
-            <div class="role">Founder & Lead Developer</div>
-          </div>
-        </div>
-        <div class="team-card">
-          <img src="images/team2.jpg" alt="Matthew Hartzell">
-          <div class="team-info">
-            <h4>Matthew Hartzell</h4>
-            <div class="role">Co-Developer & Partner</div>
-          </div>
-        </div>
-        <!-- Add more team members as needed -->
-      </div>
+      © <span id="yearSpan"></span> Dream Keepers<sup style="font-size:.6rem;color:var(--muted)">™</sup> — AWAKE, creating what others only dream.
     </div>
-  </section>
+  </footer>
 
-  <!-- DK MEDIA -->
-  <section id="dk-media" class="page" role="region" aria-labelledby="dkMediaTitle">
-    <div class="wrap">
-      <h2 id="dkMediaTitle">DK Media Group</h2>
-      <p class="lead">Producing top-tier media content, photography, and film production for clients around the globe.</p>
-    </div>
-  </section>
+  <script>
+    (function(){
+      /* ---------- Basic page routing & nav ---------- */
+      const sections = Array.from(document.querySelectorAll('section.page'));
+      const navLinks = Array.from(document.querySelectorAll('nav.main-nav a.nav-link, nav.main-nav a'));
+      const yearSpan = document.getElementById('yearSpan'); if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  <!-- DK TECH -->
-  <section id="dk-tech" class="page" role="region" aria-labelledby="dkTechTitle">
-    <div class="wrap">
-      <h2 id="dkTechTitle">DK Tech</h2>
-      <p class="lead">Innovation in technology, AI development, and apps like M-Hart 1.0 to push human-AI interaction forward.</p>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="page" role="region" aria-labelledby="galleryTitle">
-    <div class="wrap">
-      <h2 id="galleryTitle">Gallery</h2>
-      <div class="gallery-grid">
-        <img src="images/gallery1.jpg" alt="Project 1" class="gallery-item">
-        <img src="images/gallery2.jpg" alt="Project 2" class="gallery-item">
-        <img src="images/gallery3.jpg" alt="Project 3" class="gallery-item">
-        <!-- Add more images or videos as needed -->
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="page" role="region" aria-labelledby="contactTitle">
-    <div class="wrap">
-      <h2 id="contactTitle">Contact</h2>
-      <form class="card" onsubmit="event.preventDefault(); alert('Message sent!');">
-        <label>Name</label>
-        <input class="input" type="text" required>
-        <label>Email</label>
-        <input class="input" type="email" required>
-        <label>Message</label>
-        <textarea class="input" rows="4" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ADMIN DASHBOARD -->
-  <section id="admin" class="page" role="region" aria-labelledby="adminTitle">
-    <div class="wrap">
-      <h2 id="adminTitle">Admin Dashboard</h2>
-      <p class="lead">Upload new media to the gallery or team pages.</p>
-      <div class="dashboard">
-        <div class="dashboard-grid">
-          <div class="upload-box" onclick="document.getElementById('fileInput').click()">Click or drag files here to upload</div>
-          <input type="file" id="fileInput" class="hidden" multiple onchange="handleFiles(event)">
-          <div class="preview-grid" id="previewGrid"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="wrap">&copy; 2025 Dream Keepers™. All rights reserved.</div>
-</footer>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" onclick="closeLightbox()">×</button>
-    <div class="lightbox-content"></div>
-  </div>
-</div>
-
-<script>
-  // Navigation
-  const links = document.querySelectorAll('.nav-link');
-  const pages = document.querySelectorAll('.page');
-
-  links.forEach(link => {
-    link.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const section = link.dataset.section;
-      pages.forEach(p=>p.classList.remove('active'));
-      document.getElementById(section).classList.add('active');
-      links.forEach(l=>l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-
-  function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({behavior:'smooth'});
-  }
-
-  // Gallery lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxContent = lightbox.querySelector('.lightbox-content');
-  document.querySelectorAll('.gallery-item').forEach(item=>{
-    item.addEventListener('click',()=>{
-      lightboxContent.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
-      lightbox.classList.add('show');
-    });
-  });
-
-  function closeLightbox(){lightbox.classList.remove('show')}
-
-  // Admin uploads preview
-  function handleFiles(event){
-    const files = event.target.files;
-    const grid = document.getElementById('previewGrid');
-    grid.innerHTML = '';
-    Array.from(files).forEach(file=>{
-      const reader = new FileReader();
-      reader.onload = e=>{
-        if(file.type.startsWith('image')){
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          grid.appendChild(img);
-        } else if(file.type.startsWith('video')){
-          const vid = document.createElement('video');
-          vid.src = e.target.result;
-          vid.controls = true;
-          grid.appendChild(vid);
+      function showSection(id, {updateHash=true, instant=false} = {}){
+        sections.forEach(s => s.classList.remove('active'));
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.classList.add('active');
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-section') === id || (a.getAttribute('href')||'') === '#'+id));
+        if(updateHash){
+          try{ history.replaceState(null,'','#'+id); }catch(e){}
         }
+        if(!instant) window.scrollTo({top:0,behavior:'smooth'});
       }
-      reader.readAsDataURL(file);
-    });
-  }
-</script>
 
+      // Initialize from hash
+      const startHash = (window.location.hash || '').replace('#','') || 'home';
+      showSection(startHash, {updateHash:false, instant:true});
+
+      // nav binding
+      document.querySelectorAll('a[href^="#"], [data-section]').forEach(el=>{
+        el.addEventListener('click', (e)=>{
+          e.preventDefault();
+          const target = el.getAttribute('data-section') || (el.getAttribute('href')||'').replace('#','') || 'home';
+          showSection(target);
+        });
+      });
+
+      /* ---------- Lightbox ---------- */
+      const lightbox = document.getElementById('lightbox');
+      const lbContent = document.getElementById('lightboxContent');
+      const lbClose = document.getElementById('lightboxClose');
+
+      function openLightboxHTML(html){
+        lbContent.innerHTML = html;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(()=> lbClose && lbClose.focus(), 60);
+      }
+      function closeLightbox(){ lightbox.classList.remove('show'); lightbox.setAttribute('aria-hidden','true'); lbContent.innerHTML=''; document.body.style.overflow=''; }
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e)=> { if(e.target===lightbox) closeLightbox(); });
+      document.addEventListener('keyup', (e)=> { if(e.key==='Escape') closeLightbox(); });
+
+      /* ---------- Static gallery seeds (repo images) ---------- */
+      const STATIC_MEDIA = {
+        'dk-media': [
+          {type:'image', src:'images/IMG_2545.JPG', alt:'DK Krueger'},
+          {type:'image', src:'images/IMG_2555.JPG', alt:'Matthew Hartzell'}
+        ],
+        'dk-tech': [
+          {type:'image', src:'images/IMG_2799.JPG', alt:'Stephen Cartwright'},
+          {type:'image', src:'images/IMG_2619.JPG', alt:'Kenneth Miles'}
+        ],
+        'gallery': [
+          {type:'image', src:'images/IMG_2545.JPG', alt:'DK Krueger'},
+          {type:'image', src:'images/IMG_2555.JPG', alt:'Matthew Hartzell'},
+          {type:'image', src:'images/IMG_2799.JPG', alt:'Stephen Cartwright'},
+          {type:'image', src:'images/IMG_2619.JPG', alt:'Kenneth Miles'}
+        ]
+      };
+
+      /* ---------- IndexedDB wrapper for uploads ---------- */
+      const DB_NAME = 'dk_media_db_v1';
+      const STORE = 'media';
+      let dbPromise = null;
+      function openDB(){
+        if(dbPromise) return dbPromise;
+        dbPromise = new Promise((resolve,reject)=>{
+          const r = indexedDB.open(DB_NAME,1);
+          r.onupgradeneeded = (e)=> {
+            const db = e.target.result;
+            if(!db.objectStoreNames.contains(STORE)){
+              const st = db.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});
+              st.createIndex('division','division',{unique:false});
+            }
+          };
+          r.onsuccess = ()=> resolve(r.result);
+          r.onerror = ()=> reject(r.error);
+        });
+        return dbPromise;
+      }
+      async function addMedia(items){ const db = await openDB(); return new Promise((res,rej)=>{ const tx=db.transaction(STORE,'readwrite'); const st=tx.objectStore(STORE); items.forEach(it=>st.add(it)); tx.oncomplete=()=>res(true); tx.onerror=()=>rej(tx.error); }); }
+      async function getByDivision(div){ const db = await openDB(); return new Promise((res,rej)=>{ const tx=db.transaction(STORE,'readonly'); const st=tx.objectStore(STORE); const idx=st.index('division'); const rq=idx.getAll(IDBKeyRange.only(div)); rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>rej(rq.error); }); }
+      async function getAllMedia(){ const db = await openDB(); return new Promise((res,rej)=>{ const tx=db.transaction(STORE,'readonly'); const st=tx.objectStore(STORE); const rq=st.getAll(); rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>rej(rq.error); }); }
+      async function clearDivision(div){ const items = await getByDivision(div); await Promise.all(items.map(i=>deleteItem(i.id))); }
+      async function deleteItem(id){ const db = await openDB(); return new Promise((res,rej)=>{ const tx=db.transaction(STORE,'readwrite'); const st=tx.objectStore(STORE); const rq=st.delete(id); rq.onsuccess=()=>res(true); rq.onerror=()=>rej(rq.error); }); }
+
+      /* ---------- Render galleries (static + stored) ---------- */
+      const mediaGallery = document.getElementById('mediaGallery');
+      const mediaVideoGallery = document.getElementById('mediaVideoGallery');
+      const techGallery = document.getElementById('techGallery');
+      const techVideoGallery = document.getElementById('techVideoGallery');
+      const globalGallery = document.getElementById('globalGallery');
+
+      async function renderDivision(division, containerEl, filterType='image'){
+        if(!containerEl) return;
+        containerEl.innerHTML = '';
+        (STATIC_MEDIA[division]||[]).forEach(it=>{
+          if(it.type===filterType || filterType==='all'){
+            if(it.type==='image'){
+              const img = document.createElement('img'); img.src=it.src; img.alt=it.alt||''; img.className='gallery-item'; img.addEventListener('click', ()=> openLightboxHTML('<img src="'+img.src+'" alt="'+img.alt+'">')); containerEl.appendChild(img);
+            } else if(it.type==='video'){
+              const v = document.createElement('div'); v.className='video-thumb'; v.dataset.video = it.src; v.innerHTML = '<img src="'+(it.thumb||'')+'" alt=""><div class="play-overlay">▶</div>'; v.addEventListener('click', ()=> openLightboxHTML('<video controls autoplay style="max-width:100%"><source src="'+it.src+'" type="video/mp4"></video>')); containerEl.appendChild(v);
+            }
+          }
+        });
+        const stored = await getByDivision(division);
+        stored.forEach(it=>{
+          if(filterType==='image' && it.type && it.type.startsWith('image')){
+            const img = document.createElement('img'); img.src=it.dataURL; img.alt=it.name||''; img.className='gallery-item'; img.addEventListener('click', ()=> openLightboxHTML('<img src="'+img.src+'">')); containerEl.appendChild(img);
+          } else if(filterType==='video' && it.type && it.type.startsWith('video')){
+            const vid = document.createElement('video'); vid.src=it.dataURL; vid.controls=true; vid.style.width='100%'; vid.style.height='140px'; vid.style.borderRadius='8px'; vid.addEventListener('click', ()=> openLightboxHTML('<video controls autoplay style="max-width:100%"><source src="'+it.dataURL+'" type="'+it.type+'"></video>')); containerEl.appendChild(vid);
+          }
+        });
+      }
+
+      async function renderAll(){
+        await renderDivision('dk-media', mediaGallery, 'image');
+        await renderDivision('dk-media', mediaVideoGallery, 'video');
+        await renderDivision('dk-tech', techGallery, 'image');
+        await renderDivision('dk-tech', techVideoGallery, 'video');
+        // global: static + all stored
+        globalGallery.innerHTML = '';
+        (STATIC_MEDIA['gallery']||[]).forEach(it=>{
+          if(it.type==='image'){
+            const img = document.createElement('img'); img.src=it.src; img.alt=it.alt||''; img.className='gallery-item'; img.addEventListener('click', ()=> openLightboxHTML('<img src="'+img.src+'">')); globalGallery.appendChild(img);
+          }
+        });
+        const all = await getAllMedia();
+        all.forEach(it=>{
+          if(it.type && it.type.startsWith('image')){
+            const img = document.createElement('img'); img.src=it.dataURL; img.alt=it.name||''; img.className='gallery-item'; img.addEventListener('click', ()=> openLightboxHTML('<img src="'+img.src+'">')); globalGallery.appendChild(img);
+          } else if(it.type && it.type.startsWith('video')){
+            const vid = document.createElement('video'); vid.src=it.dataURL; vid.controls=true; vid.style.width='100%'; vid.style.height='140px'; vid.style.borderRadius='8px'; vid.addEventListener('click', ()=> openLightboxHTML('<video controls autoplay style="max-width:100%"><source src="'+it.dataURL+'" type="'+it.type+'"></video>')); globalGallery.appendChild(vid);
+          }
+        });
+      }
+
+      // initial render
+      renderAll();
+
+      /* ---------- Admin upload UI (preview + save) ---------- */
+      const uploadBox = document.getElementById('uploadBox');
+      const fileInput = document.getElementById('fileInput');
+      const uploadPreview = document.getElementById('uploadPreview');
+      const saveUploadBtn = document.getElementById('saveUploadBtn');
+      const divisionSelect = document.getElementById('divisionSelect');
+      const clearDivisionBtn = document.getElementById('clearDivisionBtn');
+
+      uploadBox.addEventListener('click', ()=> fileInput.click());
+      uploadBox.addEventListener('dragover', (e)=>{ e.preventDefault(); uploadBox.style.opacity=0.9; });
+      uploadBox.addEventListener('dragleave', ()=> uploadBox.style.opacity=1);
+      uploadBox.addEventListener('drop', (e)=>{ e.preventDefault(); uploadBox.style.opacity=1; fileInput.files = e.dataTransfer.files; previewFiles(fileInput.files); });
+
+      fileInput.addEventListener('change', (e)=> previewFiles(e.target.files));
+
+      function previewFiles(files){
+        uploadPreview.innerHTML = '';
+        Array.from(files).forEach(file=>{
+          const reader = new FileReader();
+          reader.onload = (ev)=>{
+            const url = ev.target.result;
+            if(file.type.startsWith('image')){
+              const img = document.createElement('img'); img.src=url; img.alt=file.name; uploadPreview.appendChild(img);
+            } else if(file.type.startsWith('video')){
+              const v = document.createElement('video'); v.src=url; v.controls=true; v.style.height='90px'; uploadPreview.appendChild(v);
+            } else {
+              const p = document.createElement('div'); p.textContent = file.name; uploadPreview.appendChild(p);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      saveUploadBtn.addEventListener('click', async ()=>{
+        const files = fileInput.files;
+        if(!files || files.length===0){ alert('No files selected. Click the upload box or drop files.'); return; }
+        const division = divisionSelect.value;
+        const items = [];
+        for(const file of files){
+          const dataURL = await readAsDataURL(file);
+          items.push({ division, name:file.name, type:file.type || guessMimeType(file.name), dataURL, uploadedAt: Date.now() });
+        }
+        try{
+          await addMedia(items);
+          alert('Saved to ' + division);
+          fileInput.value = ''; uploadPreview.innerHTML = '';
+          await renderAll();
+        }catch(err){ console.error(err); alert('Error saving files.'); }
+      });
+
+      clearDivisionBtn.addEventListener('click', async ()=>{
+        const d = divisionSelect.value;
+        if(!confirm('Clear stored uploads for '+d+'? This will remove only uploaded items stored in your browser.')) return;
+        await clearDivision(d);
+        alert('Cleared stored uploads for ' + d);
+        await renderAll();
+      });
+
+      function readAsDataURL(file){ return new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=()=>rej(fr.error); fr.readAsDataURL(file); }); }
+      function guessMimeType(name){ const ext=(name.split('.').pop()||'').toLowerCase(); if(['jpg','jpeg'].includes(ext)) return 'image/jpeg'; if(ext==='png') return 'image/png'; if(ext==='webp') return 'image/webp'; if(ext==='gif') return 'image/gif'; if(ext==='mp4') return 'video/mp4'; if(ext==='webm') return 'video/webm'; return 'application/octet-stream'; }
+
+      /* ---------- Contact form (demo) ---------- */
+      const contactForm = document.getElementById('contactForm');
+      contactForm && contactForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        alert('Contact message submitted (demo). Implement server endpoint /api/contact to receive messages.');
+        contactForm.reset();
+      });
+
+      // keep nav active on hashchange
+      window.addEventListener('hashchange', ()=> {
+        const h = (window.location.hash||'').replace('#','')||'home';
+        showSection(h, {updateHash:false});
+      });
+
+      // ensure sections re-render galleries when shown
+      document.addEventListener('click', (e)=>{
+        const target = e.target.closest('[data-section]');
+        if(target){
+          const sec = target.getAttribute('data-section');
+          if(sec === 'dk-media' || sec === 'dk-tech' || sec === 'gallery') setTimeout(()=> renderAll(),360);
+        }
+      });
+
+    })();
+  </script>
 </body>
 </html>
-
